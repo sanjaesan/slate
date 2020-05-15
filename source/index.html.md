@@ -3,13 +3,9 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - Kovadocs
 
 includes:
   - errors
@@ -19,148 +15,200 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome!! This documentation is usefull to know how to interact with the Kovatek API endpoints.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Bindings only exist in Shell!. You can view code examples in the dark area to the right.
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+# Registration
 
-# Authentication
+## Signup
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> To signup, curl this script:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"Joe@gmail.com", "password":"p4ssw0rd","user_type":1}' \
+  "https://api.kovatek.com/signup"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `Joe@gmail.com` and `P4ssw0rd` with your's repectively.
 
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
+This endpoint Creates a new user.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://api.kovatek.com/signup`
+### Parameters
 
-### Query Parameters
-
-Parameter | Default | Description
+Parameter | Type | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+email | string | Email field is required.
+password | string | Password is required and must be 8 chars or more.
+user_type | integer | Required with value 1,  2,  3.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="notice">
+<code>Email</code> must be unique
 </aside>
 
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
+## Login
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+> To login, curl this script:
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"Joe@gmail.com", "password":"p4ssw0rd"}' \
+  "https://api.kovatek.com/signup"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `Joe@gmail.com` and `P4ssw0rd` with your's repectively.
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+This endpoint logs in user.
+
+### HTTP Request
+
+`POST https://api.kovatek.com/login`
+### Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+email | string | Email field is required.
+
+password | string | Password is required and must be 8 chars or more.
+
+
+<aside class="notice">
+<code>Email</code> must be unique
+</aside>
+
+## Token
+
+> To Receive email verification token, curl this script:
+
+```shell
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"Joe@gmail.com"}' \
+  "https://api.kovatek.com/token"
 ```
 
+> Make sure to replace `Joe@gmail.com` with your email
+
+This endpoint sends verification token to the email provided. This is useful when user couldn't complete 
+registration with the above http request
+
+### HTTP Request
+
+`POST https://api.kovatek.com/api/token`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+email | string | Email field is required.
+
+<aside class="notice">
+<code>Email</code> must be present in the database
+</aside>
+
+## Verify
+
+> To Verify email, curl this script:
+
+```shell
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"token":"XXXXXXXXXXXXXXXX"}' \
+  "https://api.kovatek.com/verify"
+```
+
+> Make sure to replace `XXXXXXXXXXXXXXXX` with token received
+
+This endpoint verifies user email. 
+
+### HTTP Request
+
+`POST https://api.kovatek.com/api/forget`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+token | string | Token is required.
+
+<aside class="notice">
+<code>Token</code> must be valid
+</aside>
+
+
+## Forget
+
+> To Receive password reset token, curl this script:
+
+```shell
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"Joe@gmail.com"}' \
+  "https://api.kovatek.com/forget"
+```
+
+> Make sure to replace `Joe@gmail.com` with your email
+
+This endpoint sends password reset token to the email provided. 
+
+### HTTP Request
+
+`POST https://api.kovatek.com/forget`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+email | string | Email field is required.
+
+<aside class="notice">
+<code>Email</code> must be present in the database
+</aside>
+
+## Reset
+
+> To Receive email verification token, curl this script:
+
+```shell
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"token":"XXXXXXXXXXXXX"}' \
+  "https://api.kovatek.com/reset"
+```
+
+> Make sure to replace `XXXXXXXXXXXXX` with token received 
+
+This endpoint reset password. 
+
+### HTTP Request
+
+`POST https://api.kovatek.com/api/reset`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+token | string | token is required.
+
+<aside class="notice">
+<code>Token</code> must be valid
+</aside>
+
+# Users
+
+## Get a Specific user
+
+```shell
+curl "https://api.kovatek.com/users/2"
+  -H "Authorization: Token"
+```
 > The above command returns JSON structured like this:
 
 ```json
@@ -175,61 +223,37 @@ let max = api.kittens.get(2);
 
 This endpoint retrieves a specific kitten.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://api.kovatek.com/users/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The ID of the user to retrieve
 
 ## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
 ```shell
-curl "http://example.com/api/kittens/2"
+curl "https://api.kovatek.com/users/2"
   -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+  -H "Authorization: Token"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+ "message":"204"
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint deletes a specific user.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`DELETE https://api.kovatek.com/users/<ID>`
 
 ### URL Parameters
 
@@ -237,3 +261,50 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
 
+# Settings
+
+## Get a specified user settings
+## Get user Avatar
+## Update Profile Settings
+## Update Payment Settings
+## Update Account Settings
+## Update Notification settings
+
+# Projects
+
+## Create a New Project
+## Create Milestone for a Project
+## Get a specified Project
+## Get all Projects
+## Onboard Talents for a Specific Project
+## Update a Project Milestone
+## Update Project
+
+
+# Test
+
+## Take a Test
+## Get a specific Test
+## Get all Tests
+## Update Test
+## Delete Test
+
+# Question
+
+## Create a Question
+## Get a Questiom
+## Get all Question
+## Update Question
+## Delete Question
+
+# Grade
+
+## Grade a Test
+## Get all Grades
+## Update Grade
+## Delete Grade
+
+# Interview
+
+## Create an Interview
+## Get all Interviews

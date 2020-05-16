@@ -19,7 +19,7 @@ Welcome!! This documentation is usefull to know how to interact with the Kovatek
 
 Bindings only exist in Shell!. You can view code examples in the dark area to the right.
 
-# Registration
+# Authentication
 
 ## Signup
 
@@ -221,7 +221,7 @@ Admin | 3
 This Endpoint is only available for super users
 
 ```shell
-curl "https://api.kovatek.com/users"
+curl "https://api.kovatek.com/users" \
   -H "Authorization: Bearer XXXXXXXXXXX"
 ```
 >   

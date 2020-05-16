@@ -188,7 +188,7 @@ This endpoint reset password.
 
 ### HTTP Request
 
-`POST https://api.kovatek.com/api/reset`
+`POST https://api.kovatek.com/reset`
 
 ### Parameters
 
@@ -202,25 +202,103 @@ token | string | token is required.
 
 # Users
 
+The User Objects represent the members with an active kovatek account. 
+You can retrieve individual users as well as a list of all `Talent`, `Client` users with the available API.
+
+User Types can be exists in three flavors `Talent`, `Employers` and `Admin`
+
+**Value for the each user type will mean following:**
+
+user Type |  Value 
+--------- | ------- 
+Talent | 1
+Employers | 2
+Admin | 3 
+
+
+## Get a All users
+
+This Endpoint is only available for super users
+
+```shell
+curl "https://api.kovatek.com/users"
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+>   
+
+```json
+[  
+  {
+    "ID": 1,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "ada@gmail.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "Xx4V7yFm3vc1L6Rrn70EJ_RKv0_E-402X_IDRSIi4xE=",
+    "Verified": true,
+    "UserType": 1,
+    "SuperUser": false
+},
+  {
+    "ID": 2,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "joe@gmail.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC",
+    "Remember": "",
+    "RememberHash": "FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE=",
+    "Verify": "3nroQ3cA90Z_0NnUmMppcSwBeCyIyPIRuYOxjGcXtkY=",
+    "Verified": true,
+    "UserType": 1,
+    "SuperUser": false
+  }
+]  
+```
+
+This endpoint retrieves all User.
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users`
+
+<aside class="notice">
+Paginated to <code>100</code> Per request 
+</aside>
+
+
 ## Get a Specific user
 
 ```shell
 curl "https://api.kovatek.com/users/2"
-  -H "Authorization: Token"
+  -H "Authorization: Bearer XXXXXXXXXXX"
 ```
-> The above command returns JSON structured like this:
+> Response looks like this
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+  {
+    "ID": 1,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "ada@gmail.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "Xx4V7yFm3vc1L6Rrn70EJ_RKv0_E-402X_IDRSIi4xE=",
+    "Verified": true,
+    "UserType": 1,
+    "SuperUser": false
+  }  
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific User.
 
 ### HTTP Request
 
@@ -232,7 +310,8 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the user to retrieve
 
-## Delete a Specific Kitten
+
+## Delete a Specific User
 
 ```shell
 curl "https://api.kovatek.com/users/2"
@@ -244,7 +323,7 @@ curl "https://api.kovatek.com/users/2"
 
 ```json
 {
- "message":"204"
+  "message":"204"
 }
 ```
 
@@ -258,7 +337,7 @@ This endpoint deletes a specific user.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the user to delete
 
 # Settings
 

@@ -24,6 +24,17 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
+@import url("https://fonts.googleapis.com/css?family=Roboto");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu');html {
+  font-family: ubuntu;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
 html, body {
   color: $main-text;
   padding: 0;

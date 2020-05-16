@@ -44,7 +44,7 @@ This endpoint Creates a new user.
 Parameter | Type | Description
 --------- | ------- | -----------
 email | string | Email field is required.
-password | string | Password is required and must be 8 chars or more.
+password | string | Password must be 8 chars or more.
 user_type | integer | Required with value 1,  2,  3.
 
 <aside class="notice">
@@ -75,8 +75,7 @@ This endpoint logs in user.
 Parameter | Type | Description
 --------- | ------- | -----------
 email | string | Email field is required.
-
-password | string | Password is required and must be 8 chars or more.
+password | string | Password must be 8 chars or more.
 
 
 <aside class="notice">

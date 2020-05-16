@@ -3,6 +3,7 @@ FROM ruby:2.5-alpine
 RUN apk --no-cache add \
         g++ \
         bash\
+        git\
         gcc \
         libc-dev \
         make \

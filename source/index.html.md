@@ -220,6 +220,48 @@ Super | 4
 </aside>
 
 
+## Get user
+
+```shell
+curl "https://api.kovatek.com/users/7" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  {
+    "ID": 7,
+    "CreatedAt": "2020-05-17T21:33:29.395372Z",
+    "UpdatedAt": "2020-05-17T21:33:29.395372Z",
+    "DeletedAt": null,
+    "Email": "me@mail.kovatek.com",
+    "KovatekID": "",
+    "Password": "",
+    "PasswordHash": "$2a$10$mbHS13q/xm94xUS9q/w5GuYGYS2MQs20HMBC0pLsQEYKi1QA1aYQ.",
+    "Remember": "",
+    "RememberHash": "mb4le2fAPcc_LWAPQEuYHBcuuuj2MlTp_hNCUljnMJw=",
+    "Verify": "",
+    "Verified": false,
+    "UserType": 3
+  } 
+```
+This Endpoint gets a specified user and it's available for all user types hierarchically.
+
+* Talent can retrieve other Talents and clients only
+* Clients can retrieve other clients and talents only
+* Admin can retrieve other admins, clients and talents only
+* Super can retrieve all user types
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to retrieve
+
 ## Get All Talents
 
 ```shell
@@ -554,7 +596,7 @@ curl -X PUT \
 } 
 ```
 
-This Endpoint is available to update user passwords
+This Endpoint is available to update users password
 
 ### HTTP Request
 
@@ -565,49 +607,6 @@ This Endpoint is available to update user passwords
 Parameter | Description
 --------- | ------- 
 ID | The ID of the user to update
-
-
-## Get a Specific user
-
-```shell
-curl "https://api.kovatek.com/users/7" \
-  -H "Authorization: Bearer XXXXXXXXXXX"
-```
-> Response
-
-```json
-  {
-    "ID": 7,
-    "CreatedAt": "2020-05-17T21:33:29.395372Z",
-    "UpdatedAt": "2020-05-17T21:33:29.395372Z",
-    "DeletedAt": null,
-    "Email": "me@mail.kovatek.com",
-    "KovatekID": "",
-    "Password": "",
-    "PasswordHash": "$2a$10$mbHS13q/xm94xUS9q/w5GuYGYS2MQs20HMBC0pLsQEYKi1QA1aYQ.",
-    "Remember": "",
-    "RememberHash": "mb4le2fAPcc_LWAPQEuYHBcuuuj2MlTp_hNCUljnMJw=",
-    "Verify": "",
-    "Verified": false,
-    "UserType": 3
-  } 
-```
-This Endpoint is available only for all user types hierarchically.
-
-* Talent can retrieve other Talents and clients only
-* Clients can retrieve other clients and talents only
-* Admin can retrieve other admins, clients and talents only
-* Super can retrieve all user types
-
-### HTTP Request
-
-`GET http://api.kovatek.com/users/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | ------- 
-ID | The ID of the user to retrieve
 
 
 ## Delete a Specific User
@@ -641,13 +640,15 @@ Parameter | Description
 ID | The ID of the user to delete
 
 # Settings
+The Setting Objects holds members profile, account and payment info.
 
-## Get a specified user settings
-## Get user Avatar
-## Update Profile Settings
-## Update Payment Settings
-## Update Account Settings
-## Update Notification settings
+## Get Avatar
+## Get setting
+## Get all settings
+## Update Profile Setting
+## Update Payment Setting
+## Update Account Setting
+## Update Notification setting
 
 # Projects
 

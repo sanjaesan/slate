@@ -643,12 +643,274 @@ ID | The ID of the user to delete
 The Setting Objects holds members profile, account and payment info.
 
 ## Get Avatar
+
+```shell
+curl "https://api.kovatek.com/settings/7/avatar" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  {
+
+  } 
+```
+This Endpoint gets a specified user avatar, you can only get what you own
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/<ID>/avatar`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to retrieve avatar
+
 ## Get setting
+
+```shell
+curl "https://api.kovatek.com/settings/32442" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  {
+    "ID": 32442,
+    "CreatedAt": "2020-05-17T22:04:20.993888Z",
+    "UpdatedAt": "2020-05-17T22:24:43.84589Z",
+    "DeletedAt": null,
+    "UserID": 32442,
+    "Avatar": "pics.png",
+    "Email": "me@mail.kovatek.com",
+    "Firstname": "Adama",
+    "Surname": "Traore",
+    "Phone": "0801000000",
+    "City": "Abuja",
+    "Country": "Nigeria",
+    "Skills": ["docker","CICD","Python","Vuejs"],
+    "AccountName": "Adama Traore",
+    "AccountNumber": 2060000206,
+    "BankName": "UBA",
+    "Language": "English",
+    "Currency": "NGN",
+    "InviteLink": "https://kovatek.com/invite/4f43f34",
+    "EmailNewsletter": true,
+    "EmailPaymentReceipt": false,
+    "EmailNewProjectUploaded": true,
+    "EmailMilestoneApproved": false,
+    "EmailNewMemberAdded": false
+  } 
+```
+This Endpoint gets a specified user avatar, you can only get what you own
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to retrieve it's setting
+
 ## Get all settings
+
+
+```shell
+curl "https://api.kovatek.com/settings/?offset=32442" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  [
+    {
+      "ID": 32442,
+      "CreatedAt": "2020-05-17T22:04:20.993888Z",
+      "UpdatedAt": "2020-05-17T22:24:43.84589Z",
+      "DeletedAt": null,
+      "UserID": 32442,
+      "Avatar": "pics.png",
+      "Email": "me@mail.kovatek.com",
+      "Firstname": "Adama",
+      "Surname": "Traore",
+      "Phone": "0801000000",
+      "City": "Abuja",
+      "Country": "Nigeria",
+      "Skills": ["docker","CICD","Python","Vuejs"],
+      "AccountName": "Adama Traore",
+      "AccountNumber": 2060000206,
+      "BankName": "UBA",
+      "Language": "English",
+      "Currency": "NGN",
+      "InviteLink": "https://kovatek.com/invite/4f43f34",
+      "EmailNewsletter": true,
+      "EmailPaymentReceipt": false,
+      "EmailNewProjectUploaded": true,
+      "EmailMilestoneApproved": false,
+      "EmailNewMemberAdded": false
+    },
+    {
+      "ID": 32443,
+      "CreatedAt": "2020-05-17T22:04:20.993888Z",
+      "UpdatedAt": "2020-05-17T22:24:43.84589Z",
+      "DeletedAt": null,
+      "UserID": 32443,
+      "Avatar": "deji.png",
+      "Email": "me@dev.com",
+      "Firstname": "Adelowo",
+      "Surname": "Adedeji",
+      "Phone": "0909000000",
+      "City": "Lagos",
+      "Country": "Nigeria",
+      "Skills": ["Kubernetes","CICD","Docker","Jenkins"],
+      "AccountName": "Adelowo Adedeji",
+      "AccountNumber": 3060000306,
+      "BankName": "FirstBank",
+      "Language": "English",
+      "Currency": "NGN",
+      "InviteLink": "https://kovatek.com/invite/53t3540",
+      "EmailNewsletter": true,
+      "EmailPaymentReceipt": false,
+      "EmailNewProjectUploaded": true,
+      "EmailMilestoneApproved": false,
+      "EmailNewMemberAdded": false
+    } 
+  ]
+```
+This Endpoint gets all user settings, available for admin and supers
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/`
+
+
 ## Update Profile Setting
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"Firstname": "Adelowo", 
+         "Surname": "Adedeji",
+         "Phone": "0909000000",
+         "City": "Lagos",
+         "Country": "Nigeria",
+         "Skills": ["Kubernetes","CICD","Docker","Jenkins"]
+        }' \
+    "https://api.kovatek.com/settings/32423/profile" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to update user profile settings
+
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/<ID>/profile`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to update it's profile settings
+
+
+
 ## Update Payment Setting
+
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"AccountName": "Adedeji Adelowo",
+         "AccountNumber": 3060000306,
+         "BankName": "FirstBank",
+        }' \
+    "https://api.kovatek.com/settings/32423/payment" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to update user payment setting
+
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/<ID>/payment`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to update it's payment setting
+
 ## Update Account Setting
+
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"Language": "English",
+         "Currency": "NGN",
+        }' \
+    "https://api.kovatek.com/settings/32423/account" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to update user account setting
+
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/<ID>/account`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to update it's account setting
+
 ## Update Notification setting
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"EmailNewsletter": true,
+         "EmailPaymentReceipt": false,
+         "EmailNewProjectUploaded": true,
+         "EmailMilestoneApproved": false,
+         "EmailNewMemberAdded": true
+        }' \
+    "https://api.kovatek.com/settings/32423/notification" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to update user notification setting
+
+### HTTP Request
+
+`GET http://api.kovatek.com/settings/<ID>/notification`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the user to update it's notification setting
 
 # Projects
 

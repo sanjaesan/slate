@@ -259,6 +259,9 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-user" class="toc-h2 toc-link" data-title="Get user">Get user</a>
+                  </li>
+                  <li>
                     <a href="#get-all-talents" class="toc-h2 toc-link" data-title="Get All Talents">Get All Talents</a>
                   </li>
                   <li>
@@ -277,9 +280,6 @@
                     <a href="#update-user-password" class="toc-h2 toc-link" data-title="Update User Password">Update User Password</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-user" class="toc-h2 toc-link" data-title="Get a Specific user">Get a Specific user</a>
-                  </li>
-                  <li>
                     <a href="#delete-a-specific-user" class="toc-h2 toc-link" data-title="Delete a Specific User">Delete a Specific User</a>
                   </li>
               </ul>
@@ -288,22 +288,25 @@
             <a href="#settings" class="toc-h1 toc-link" data-title="Settings">Settings</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-a-specified-user-settings" class="toc-h2 toc-link" data-title="Get a specified user settings">Get a specified user settings</a>
+                    <a href="#get-avatar" class="toc-h2 toc-link" data-title="Get Avatar">Get Avatar</a>
                   </li>
                   <li>
-                    <a href="#get-user-avatar" class="toc-h2 toc-link" data-title="Get user Avatar">Get user Avatar</a>
+                    <a href="#get-setting" class="toc-h2 toc-link" data-title="Get setting">Get setting</a>
                   </li>
                   <li>
-                    <a href="#update-profile-settings" class="toc-h2 toc-link" data-title="Update Profile Settings">Update Profile Settings</a>
+                    <a href="#get-all-settings" class="toc-h2 toc-link" data-title="Get all settings">Get all settings</a>
                   </li>
                   <li>
-                    <a href="#update-payment-settings" class="toc-h2 toc-link" data-title="Update Payment Settings">Update Payment Settings</a>
+                    <a href="#update-profile-setting" class="toc-h2 toc-link" data-title="Update Profile Setting">Update Profile Setting</a>
                   </li>
                   <li>
-                    <a href="#update-account-settings" class="toc-h2 toc-link" data-title="Update Account Settings">Update Account Settings</a>
+                    <a href="#update-payment-setting" class="toc-h2 toc-link" data-title="Update Payment Setting">Update Payment Setting</a>
                   </li>
                   <li>
-                    <a href="#update-notification-settings" class="toc-h2 toc-link" data-title="Update Notification settings">Update Notification settings</a>
+                    <a href="#update-account-setting" class="toc-h2 toc-link" data-title="Update Account Setting">Update Account Setting</a>
+                  </li>
+                  <li>
+                    <a href="#update-notification-setting" class="toc-h2 toc-link" data-title="Update Notification setting">Update Notification setting</a>
                   </li>
               </ul>
           </li>
@@ -670,6 +673,50 @@ registration with the above http request</p>
 <aside class="notice">
 <code>Super</code> users are indeed super, You can't register them
 </aside>
+<h2 id='get-user'>Get user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/7"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T21:33:29.395372Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T21:33:29.395372Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"KovatekID"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$mbHS13q/xm94xUS9q/w5GuYGYS2MQs20HMBC0pLsQEYKi1QA1aYQ."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mb4le2fAPcc_LWAPQEuYHBcuuuj2MlTp_hNCUljnMJw="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint gets a specified user and it&#39;s available for all user types hierarchically.</p>
+
+<ul>
+<li>Talent can retrieve other Talents and clients only</li>
+<li>Clients can retrieve other clients and talents only</li>
+<li>Admin can retrieve other admins, clients and talents only</li>
+<li>Super can retrieve all user types</li>
+</ul>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to retrieve</td>
+</tr>
+</tbody></table>
 <h2 id='get-all-talents'>Get All Talents</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/talents?limit=2"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
@@ -710,7 +757,7 @@ registration with the above http request</p>
 </span><span class="p">]</span><span class="w">  
 </span></code></pre></div>
 <p>This Endpoint is available for all user types and retrieves talents with a limit or offset query</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/talents</code></p>
 
 <aside class="notice">
@@ -757,7 +804,7 @@ Default limit is <code>10</code> and default offset is <code>0</code>
 </span></code></pre></div>
 <p>This Endpoint is available for all user types and retrieves all clients
 with a limit or offset query</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/clients</code></p>
 
 <aside class="notice">
@@ -804,7 +851,7 @@ Default limit is <code>10</code> and default offset is <code>0</code>
 </span></code></pre></div>
 <p>This Endpoint is available for admin and super users and retrieves all admins
 with a limit or offset query</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/admins</code></p>
 
 <aside class="notice">
@@ -866,7 +913,7 @@ Default limit is <code>10</code> and default offset is <code>0</code>
 </span></code></pre></div>
 <p>This Endpoint is available for Super users and retrieves all supers
 with a limit or offset query</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/supers</code></p>
 
 <aside class="notice">
@@ -943,7 +990,7 @@ Default limit is <code>10</code> and default offset is <code>0</code>
 </span></code></pre></div>
 <p>This Endpoint is available for only Super users and retrieves all user types
 with a limit or offset query</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/</code></p>
 
 <aside class="notice">
@@ -962,51 +1009,7 @@ Default limit is <code>10</code> and default offset is <code>0</code>
   </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
-<p>This Endpoint is available to update user passwords</p>
-<h3 id='http-request-12'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/users/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user to update</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-specific-user'>Get a Specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/7"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
-</code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T21:33:29.395372Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T21:33:29.395372Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mail.kovatek.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"KovatekID"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$mbHS13q/xm94xUS9q/w5GuYGYS2MQs20HMBC0pLsQEYKi1QA1aYQ."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mb4le2fAPcc_LWAPQEuYHBcuuuj2MlTp_hNCUljnMJw="</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-  </span><span class="p">}</span><span class="w"> 
-</span></code></pre></div>
-<p>This Endpoint is available only for all user types hierarchically.</p>
-
-<ul>
-<li>Talent can retrieve other Talents and clients only</li>
-<li>Clients can retrieve other clients and talents only</li>
-<li>Admin can retrieve other admins, clients and talents only</li>
-<li>Super can retrieve all user types</li>
-</ul>
+<p>This Endpoint is available to update users password</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
@@ -1018,7 +1021,7 @@ Default limit is <code>10</code> and default offset is <code>0</code>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the user to retrieve</td>
+<td>The ID of the user to update</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-specific-user'>Delete a Specific User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/2"</span> <span class="se">\</span>
@@ -1049,7 +1052,9 @@ Super users can do that also anyways.</p>
 <td>The ID of the user to delete</td>
 </tr>
 </tbody></table>
-<h1 id='settings'>Settings</h1><h2 id='get-a-specified-user-settings'>Get a specified user settings</h2><h2 id='get-user-avatar'>Get user Avatar</h2><h2 id='update-profile-settings'>Update Profile Settings</h2><h2 id='update-payment-settings'>Update Payment Settings</h2><h2 id='update-account-settings'>Update Account Settings</h2><h2 id='update-notification-settings'>Update Notification settings</h2><h1 id='projects'>Projects</h1><h2 id='create-a-new-project'>Create a New Project</h2><h2 id='create-milestone-for-a-project'>Create Milestone for a Project</h2><h2 id='get-a-specified-project'>Get a specified Project</h2><h2 id='get-all-projects'>Get all Projects</h2><h2 id='onboard-talents-for-a-specific-project'>Onboard Talents for a Specific Project</h2><h2 id='update-a-project-milestone'>Update a Project Milestone</h2><h2 id='update-project'>Update Project</h2><h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
+<h1 id='settings'>Settings</h1>
+<p>The Setting Objects holds members profile, account and payment info.</p>
+<h2 id='get-avatar'>Get Avatar</h2><h2 id='get-setting'>Get setting</h2><h2 id='get-all-settings'>Get all settings</h2><h2 id='update-profile-setting'>Update Profile Setting</h2><h2 id='update-payment-setting'>Update Payment Setting</h2><h2 id='update-account-setting'>Update Account Setting</h2><h2 id='update-notification-setting'>Update Notification setting</h2><h1 id='projects'>Projects</h1><h2 id='create-a-new-project'>Create a New Project</h2><h2 id='create-milestone-for-a-project'>Create Milestone for a Project</h2><h2 id='get-a-specified-project'>Get a specified Project</h2><h2 id='get-all-projects'>Get all Projects</h2><h2 id='onboard-talents-for-a-specific-project'>Onboard Talents for a Specific Project</h2><h2 id='update-a-project-milestone'>Update a Project Milestone</h2><h2 id='update-project'>Update Project</h2><h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section helps you have a clue of what you are doing wrong
 </aside>

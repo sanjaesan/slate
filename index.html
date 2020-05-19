@@ -1054,7 +1054,268 @@ Super users can do that also anyways.</p>
 </tbody></table>
 <h1 id='settings'>Settings</h1>
 <p>The Setting Objects holds members profile, account and payment info.</p>
-<h2 id='get-avatar'>Get Avatar</h2><h2 id='get-setting'>Get setting</h2><h2 id='get-all-settings'>Get all settings</h2><h2 id='update-profile-setting'>Update Profile Setting</h2><h2 id='update-payment-setting'>Update Payment Setting</h2><h2 id='update-account-setting'>Update Account Setting</h2><h2 id='update-notification-setting'>Update Notification setting</h2><h1 id='projects'>Projects</h1><h2 id='create-a-new-project'>Create a New Project</h2><h2 id='create-milestone-for-a-project'>Create Milestone for a Project</h2><h2 id='get-a-specified-project'>Get a specified Project</h2><h2 id='get-all-projects'>Get all Projects</h2><h2 id='onboard-talents-for-a-specific-project'>Onboard Talents for a Specific Project</h2><h2 id='update-a-project-milestone'>Update a Project Milestone</h2><h2 id='update-project'>Update Project</h2><h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
+<h2 id='get-avatar'>Get Avatar</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/settings/7/avatar"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+
+  </span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint gets a specified user avatar, you can only get what you own</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/&lt;ID&gt;/avatar</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to retrieve avatar</td>
+</tr>
+</tbody></table>
+<h2 id='get-setting'>Get setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/settings/32442"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">32442</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T22:04:20.993888Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T22:24:43.84589Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserID"</span><span class="p">:</span><span class="w"> </span><span class="mi">32442</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pics.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adama"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Traore"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0801000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abuja"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nigeria"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"docker"</span><span class="p">,</span><span class="s2">"CICD"</span><span class="p">,</span><span class="s2">"Python"</span><span class="p">,</span><span class="s2">"Vuejs"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"AccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adama Traore"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"AccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2060000206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"BankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UBA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"InviteLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://kovatek.com/invite/4f43f34"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"EmailNewsletter"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"EmailPaymentReceipt"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"EmailNewProjectUploaded"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"EmailMilestoneApproved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"EmailNewMemberAdded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint gets a specified user avatar, you can only get what you own</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to retrieve it&#39;s setting</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-settings'>Get all settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/settings/?offset=32442"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">32442</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T22:04:20.993888Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T22:24:43.84589Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"UserID"</span><span class="p">:</span><span class="w"> </span><span class="mi">32442</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pics.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adama"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Traore"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0801000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abuja"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nigeria"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"docker"</span><span class="p">,</span><span class="s2">"CICD"</span><span class="p">,</span><span class="s2">"Python"</span><span class="p">,</span><span class="s2">"Vuejs"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"AccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adama Traore"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"AccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2060000206</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"BankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UBA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"InviteLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://kovatek.com/invite/4f43f34"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailNewsletter"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailPaymentReceipt"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailNewProjectUploaded"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailMilestoneApproved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailNewMemberAdded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">32443</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T22:04:20.993888Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T22:24:43.84589Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"UserID"</span><span class="p">:</span><span class="w"> </span><span class="mi">32443</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deji.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@dev.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adelowo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adedeji"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0909000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lagos"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nigeria"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Kubernetes"</span><span class="p">,</span><span class="s2">"CICD"</span><span class="p">,</span><span class="s2">"Docker"</span><span class="p">,</span><span class="s2">"Jenkins"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"AccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adelowo Adedeji"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"AccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">3060000306</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"BankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FirstBank"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"InviteLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://kovatek.com/invite/53t3540"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailNewsletter"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailPaymentReceipt"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailNewProjectUploaded"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailMilestoneApproved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"EmailNewMemberAdded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w"> 
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This Endpoint gets all user settings, available for admin and supers</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/</code></p>
+<h2 id='update-profile-setting'>Update Profile Setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"Firstname": "Adelowo", 
+         "Surname": "Adedeji",
+         "Phone": "0909000000",
+         "City": "Lagos",
+         "Country": "Nigeria",
+         "Skills": ["Kubernetes","CICD","Docker","Jenkins"]
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/settings/32423/profile"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to update user profile settings</p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/&lt;ID&gt;/profile</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to update it&#39;s profile settings</td>
+</tr>
+</tbody></table>
+<h2 id='update-payment-setting'>Update Payment Setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"AccountName": "Adedeji Adelowo",
+         "AccountNumber": 3060000306,
+         "BankName": "FirstBank",
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/settings/32423/payment"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to update user payment setting</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/&lt;ID&gt;/payment</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to update it&#39;s payment setting</td>
+</tr>
+</tbody></table>
+<h2 id='update-account-setting'>Update Account Setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"Language": "English",
+         "Currency": "NGN",
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/settings/32423/account"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to update user account setting</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/&lt;ID&gt;/account</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to update it&#39;s account setting</td>
+</tr>
+</tbody></table>
+<h2 id='update-notification-setting'>Update Notification setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"EmailNewsletter": true,
+         "EmailPaymentReceipt": false,
+         "EmailNewProjectUploaded": true,
+         "EmailMilestoneApproved": false,
+         "EmailNewMemberAdded": true
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/settings/32423/notification"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to update user notification setting</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/settings/&lt;ID&gt;/notification</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to update it&#39;s notification setting</td>
+</tr>
+</tbody></table>
+<h1 id='projects'>Projects</h1><h2 id='create-a-new-project'>Create a New Project</h2><h2 id='create-milestone-for-a-project'>Create Milestone for a Project</h2><h2 id='get-a-specified-project'>Get a specified Project</h2><h2 id='get-all-projects'>Get all Projects</h2><h2 id='onboard-talents-for-a-specific-project'>Onboard Talents for a Specific Project</h2><h2 id='update-a-project-milestone'>Update a Project Milestone</h2><h2 id='update-project'>Update Project</h2><h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section helps you have a clue of what you are doing wrong
 </aside>

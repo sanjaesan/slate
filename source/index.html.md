@@ -109,7 +109,7 @@ Parameter | Type | Description
 email | string | Email field is required.
 
 <aside class="notice">
-<code>Email</code> must be present in the database
+<code>Email</code> must exists
 </aside>
 
 ## Verify
@@ -168,7 +168,7 @@ Parameter | Type | Description
 email | string | Email field is required.
 
 <aside class="notice">
-<code>Email</code> must be present in the database
+<code>Email</code> must exists
 </aside>
 
 ## Reset
@@ -184,7 +184,7 @@ curl -X POST \
 
 > Make sure to replace `XXXXXXXXXXXXX` with token received 
 
-This endpoint reset password. 
+This endpoint resets password. 
 
 ### HTTP Request
 
@@ -203,28 +203,84 @@ token | string | token is required.
 # Users
 
 The User Objects represent the members with an active kovatek account. 
-You can retrieve individual users as well as a list of all `Talent`, `Client` users with the available API.
 
-User Types can be exists in three flavors `Talent`, `Employers` and `Admin`
+User Types exists in four flavors `Talent`, `Client`,`Admin` and `Super`
 
-**Value for the each user type will mean following:**
+**Value for each user type will mean the following:**
 
-user Type |  Value 
+User Type |  Value 
 --------- | ------- 
 Talent | 1
-Employers | 2
+Client | 2
 Admin | 3 
+Super | 4
+
+<aside class="notice">
+<code>Super</code> users are indeed super, You can't register them
+</aside>
 
 
-## Get a All users
-
-This Endpoint is only available for super users
+## Get All Talents
 
 ```shell
-curl "https://api.kovatek.com/users" \
+curl "https://api.kovatek.com/users/talents?limit=2" \
   -H "Authorization: Bearer XXXXXXXXXXX"
 ```
->   
+
+> Response
+
+```json
+[  
+  {
+    "ID": 9,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "talent@gmail.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 1,
+},
+  {
+    "ID": 23,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "coder@gmail.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC",
+    "Remember": "",
+    "RememberHash": "FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 1,
+  }
+]  
+```
+This Endpoint is available for all user types and retrieves talents with a limit or offset query
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users/talents`
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+
+
+## Get All Clients
+
+```shell
+curl "https://api.kovatek.com/users/clients?limit=2" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
 
 ```json
 [  
@@ -238,10 +294,10 @@ curl "https://api.kovatek.com/users" \
     "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
     "Remember": "",
     "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
-    "Verify": "Xx4V7yFm3vc1L6Rrn70EJ_RKv0_E-402X_IDRSIi4xE=",
+    "Verify": "",
     "Verified": true,
-    "UserType": 1,
-    "SuperUser": false
+    "Locked": false,
+    "UserType": 2,
 },
   {
     "ID": 2,
@@ -253,52 +309,252 @@ curl "https://api.kovatek.com/users" \
     "PasswordHash": "$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC",
     "Remember": "",
     "RememberHash": "FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE=",
-    "Verify": "3nroQ3cA90Z_0NnUmMppcSwBeCyIyPIRuYOxjGcXtkY=",
+    "Verify": "",
     "Verified": true,
-    "UserType": 1,
-    "SuperUser": false
+    "Locked": false,
+    "UserType": 2,
   }
 ]  
 ```
 
-This endpoint retrieves all User.
+This Endpoint is available for all user types and retrieves all clients
+with a limit or offset query
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/users`
+`GET http://api.kovatek.com/users/clients`
 
 <aside class="notice">
-Paginated to <code>100</code> Per request 
+Default limit is <code>10</code> and default offset is <code>0</code>
 </aside>
 
 
-## Get a Specific user
+## Get All Admins
 
 ```shell
-curl "https://api.kovatek.com/users/2"
+curl "https://api.kovatek.com/users/admins?limit=2" \
   -H "Authorization: Bearer XXXXXXXXXXX"
 ```
-> Response looks like this
+> Response
 
 ```json
+[  
   {
-    "ID": 1,
+    "ID": 15,
     "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
     "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
     "DeletedAt": null,
-    "Email": "ada@gmail.com",
+    "Email": "you@mail.kovatek.com",
     "Password": "",
     "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
     "Remember": "",
     "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
-    "Verify": "Xx4V7yFm3vc1L6Rrn70EJ_RKv0_E-402X_IDRSIi4xE=",
+    "Verify": "",
     "Verified": true,
-    "UserType": 1,
-    "SuperUser": false
-  }  
+    "Locked": false,
+    "UserType": 3,
+},
+  {
+    "ID": 7,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "me@mail.kovatek.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC",
+    "Remember": "",
+    "RememberHash": "FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 3,
+  }
+]  
 ```
 
-This endpoint retrieves a specific User.
+This Endpoint is available for admin and super users and retrieves all admins
+with a limit or offset query
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users/admins`
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+
+
+## Get All Supers
+
+```shell
+curl "https://api.kovatek.com/users/supers?offset=5" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+[  
+  {
+    "ID": 6,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "baba@super.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 4,
+},
+  {
+    "ID": 21,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "super@mail.kovatek.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 4,
+},
+  {
+    "ID": 33,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "boss@mail.kovatek.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC",
+    "Remember": "",
+    "RememberHash": "FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 4,
+  }
+]  
+```
+
+This Endpoint is available for Super users and retrieves all supers
+with a limit or offset query
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users/supers`
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+
+## Get All User Types
+
+```shell
+curl "https://api.kovatek.com/users/supers?offset=200" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+[  
+  {
+    "ID": 201,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "dev@dev.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 1,
+},
+  {
+    "ID": 202,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "client@client.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 2,
+},
+  {
+    "ID": 203,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "admin@mail.kovatek.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi",
+    "Remember": "",
+    "RememberHash": "bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 3,
+},
+  {
+    "ID": 204,
+    "CreatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "UpdatedAt": "2020-05-14T12:54:14.03108+01:00",
+    "DeletedAt": null,
+    "Email": "user@super.com",
+    "Password": "",
+    "PasswordHash": "$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC",
+    "Remember": "",
+    "RememberHash": "FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE=",
+    "Verify": "",
+    "Verified": true,
+    "Locked": false,
+    "UserType": 4,
+  }
+]  
+```
+
+This Endpoint is available for only Super users and retrieves all user types
+with a limit or offset query
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users/`
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+
+## Update User Password
+
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"old_password":"XXXXXXXXX", "new_password":"#########"}' \
+    "https://api.kovatek.com/users/2" 
+
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to update user passwords
 
 ### HTTP Request
 
@@ -307,19 +563,62 @@ This endpoint retrieves a specific User.
 ### URL Parameters
 
 Parameter | Description
---------- | -----------
+--------- | ------- 
+ID | The ID of the user to update
+
+
+## Get a Specific user
+
+```shell
+curl "https://api.kovatek.com/users/7" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  {
+    "ID": 7,
+    "CreatedAt": "2020-05-17T21:33:29.395372Z",
+    "UpdatedAt": "2020-05-17T21:33:29.395372Z",
+    "DeletedAt": null,
+    "Email": "me@mail.kovatek.com",
+    "KovatekID": "",
+    "Password": "",
+    "PasswordHash": "$2a$10$mbHS13q/xm94xUS9q/w5GuYGYS2MQs20HMBC0pLsQEYKi1QA1aYQ.",
+    "Remember": "",
+    "RememberHash": "mb4le2fAPcc_LWAPQEuYHBcuuuj2MlTp_hNCUljnMJw=",
+    "Verify": "",
+    "Verified": false,
+    "UserType": 3
+  } 
+```
+This Endpoint is available only for all user types hierarchically.
+
+* Talent can retrieve other Talents and clients only
+* Clients can retrieve other clients and talents only
+* Admin can retrieve other admins, clients and talents only
+* Super can retrieve all user types
+
+### HTTP Request
+
+`GET http://api.kovatek.com/users/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
 ID | The ID of the user to retrieve
 
 
 ## Delete a Specific User
 
 ```shell
-curl "https://api.kovatek.com/users/2"
-  -X DELETE
-  -H "Authorization: Token"
+curl "https://api.kovatek.com/users/2" \
+  -X DELETE \
+  -H "Authorization: Bearer XXXXXXXXXXX"
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
@@ -327,7 +626,9 @@ curl "https://api.kovatek.com/users/2"
 }
 ```
 
-This endpoint deletes a specific user.
+This endpoint is available only for the user himself, 
+why would you want to delete someone else's account? lol.
+Super users can do that also anyways.
 
 ### HTTP Request
 

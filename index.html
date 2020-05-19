@@ -1200,12 +1200,12 @@ Super users can do that also anyways.</p>
 <p><code>GET http://api.kovatek.com/settings/</code></p>
 <h2 id='update-profile-setting'>Update Profile Setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"Firstname": "Adelowo", 
-         "Surname": "Adedeji",
-         "Phone": "0909000000",
-         "City": "Lagos",
-         "Country": "Nigeria",
-         "Skills": ["Kubernetes","CICD","Docker","Jenkins"]
+    <span class="nt">-d</span> <span class="s1">'{"firstname": "Adelowo", 
+         "furname": "Adedeji",
+         "phone": "0909000000",
+         "city": "Lagos",
+         "country": "Nigeria",
+         "skills": ["Kubernetes","CICD","Docker","Jenkins"]
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/settings/32423/profile"</span> 
 </code></pre></div>
@@ -1213,7 +1213,7 @@ Super users can do that also anyways.</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to update user profile settings</p>
@@ -1233,9 +1233,9 @@ Super users can do that also anyways.</p>
 </tbody></table>
 <h2 id='update-payment-setting'>Update Payment Setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"AccountName": "Adedeji Adelowo",
-         "AccountNumber": 3060000306,
-         "BankName": "FirstBank",
+    <span class="nt">-d</span> <span class="s1">'{"account_name": "Adedeji Adelowo",
+         "account_number": 3060000306,
+         "bank_name": "FirstBank",
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/settings/32423/payment"</span> 
 </code></pre></div>
@@ -1263,8 +1263,8 @@ Super users can do that also anyways.</p>
 </tbody></table>
 <h2 id='update-account-setting'>Update Account Setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"Language": "English",
-         "Currency": "NGN",
+    <span class="nt">-d</span> <span class="s1">'{"language": "English",
+         "currency": "NGN",
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/settings/32423/account"</span> 
 </code></pre></div>
@@ -1292,11 +1292,11 @@ Super users can do that also anyways.</p>
 </tbody></table>
 <h2 id='update-notification-setting'>Update Notification setting</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"EmailNewsletter": true,
-         "EmailPaymentReceipt": false,
-         "EmailNewProjectUploaded": true,
-         "EmailMilestoneApproved": false,
-         "EmailNewMemberAdded": true
+    <span class="nt">-d</span> <span class="s1">'{"email_newsletter": true,
+         "email_payment_receipt": false,
+         "email_new_project_uploaded": true,
+         "email_milestone_approved": false,
+         "email_new_member_added": true
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/settings/32423/notification"</span> 
 </code></pre></div>

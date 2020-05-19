@@ -233,7 +233,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#registration" class="toc-h1 toc-link" data-title="Registration">Registration</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#signup" class="toc-h2 toc-link" data-title="Signup">Signup</a>
@@ -259,7 +259,22 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-a-all-users" class="toc-h2 toc-link" data-title="Get a All users">Get a All users</a>
+                    <a href="#get-all-talents" class="toc-h2 toc-link" data-title="Get All Talents">Get All Talents</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-clients" class="toc-h2 toc-link" data-title="Get All Clients">Get All Clients</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-admins" class="toc-h2 toc-link" data-title="Get All Admins">Get All Admins</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-supers" class="toc-h2 toc-link" data-title="Get All Supers">Get All Supers</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-user-types" class="toc-h2 toc-link" data-title="Get All User Types">Get All User Types</a>
+                  </li>
+                  <li>
+                    <a href="#update-user-password" class="toc-h2 toc-link" data-title="Update User Password">Update User Password</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-user" class="toc-h2 toc-link" data-title="Get a Specific user">Get a Specific user</a>
@@ -401,7 +416,7 @@
 <p>Welcome!! This documentation is usefull to know how to interact with the Kovatek API endpoints.</p>
 
 <p>Bindings only exist in Shell!. You can view code examples in the dark area to the right.</p>
-<h1 id='registration'>Registration</h1><h2 id='signup'>Signup</h2>
+<h1 id='authentication'>Authentication</h1><h2 id='signup'>Signup</h2>
 <blockquote>
 <p>To signup, curl this script:</p>
 </blockquote>
@@ -517,7 +532,7 @@ registration with the above http request</p>
 </tbody></table>
 
 <aside class="notice">
-<code>Email</code> must be present in the database
+<code>Email</code> must exists
 </aside>
 <h2 id='verify'>Verify</h2>
 <blockquote>
@@ -585,7 +600,7 @@ registration with the above http request</p>
 </tbody></table>
 
 <aside class="notice">
-<code>Email</code> must be present in the database
+<code>Email</code> must exists
 </aside>
 <h2 id='reset'>Reset</h2>
 <blockquote>
@@ -600,7 +615,7 @@ registration with the above http request</p>
 <p>Make sure to replace <code>XXXXXXXXXXXXX</code> with token received </p>
 </blockquote>
 
-<p>This endpoint reset password. </p>
+<p>This endpoint resets password. </p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST https://api.kovatek.com/reset</code></p>
 <h3 id='parameters-6'>Parameters</h3>
@@ -622,16 +637,15 @@ registration with the above http request</p>
 <code>Token</code> must be valid
 </aside>
 <h1 id='users'>Users</h1>
-<p>The User Objects represent the members with an active kovatek account. 
-You can retrieve individual users as well as a list of all <code>Talent</code>, <code>Client</code> users with the available API.</p>
+<p>The User Objects represent the members with an active kovatek account. </p>
 
-<p>User Types can be exists in three flavors <code>Talent</code>, <code>Employers</code> and <code>Admin</code></p>
+<p>User Types exists in four flavors <code>Talent</code>, <code>Client</code>,<code>Admin</code> and <code>Super</code></p>
 
-<p><strong>Value for the each user type will mean following:</strong></p>
+<p><strong>Value for each user type will mean the following:</strong></p>
 
 <table><thead>
 <tr>
-<th>user Type</th>
+<th>User Type</th>
 <th>Value</th>
 </tr>
 </thead><tbody>
@@ -640,20 +654,73 @@ You can retrieve individual users as well as a list of all <code>Talent</code>, 
 <td>1</td>
 </tr>
 <tr>
-<td>Employers</td>
+<td>Client</td>
 <td>2</td>
 </tr>
 <tr>
 <td>Admin</td>
 <td>3</td>
 </tr>
+<tr>
+<td>Super</td>
+<td>4</td>
+</tr>
 </tbody></table>
-<h2 id='get-a-all-users'>Get a All users</h2>
-<p>This Endpoint is only available for super users</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users"</span>
+
+<aside class="notice">
+<code>Super</code> users are indeed super, You can't register them
+</aside>
+<h2 id='get-all-talents'>Get All Talents</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/talents?limit=2"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
 <blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talent@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coder@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">  
+</span></code></pre></div>
+<p>This Endpoint is available for all user types and retrieves talents with a limit or offset query</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/talents</code></p>
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+<h2 id='get-all-clients'>Get All Clients</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/clients?limit=2"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
   </span><span class="p">{</span><span class="w">
@@ -666,10 +733,10 @@ You can retrieve individual users as well as a list of all <code>Talent</code>, 
     </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xx4V7yFm3vc1L6Rrn70EJ_RKv0_E-402X_IDRSIi4xE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"SuperUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
 </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -681,46 +748,268 @@ You can retrieve individual users as well as a list of all <code>Talent</code>, 
     </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE="</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3nroQ3cA90Z_0NnUmMppcSwBeCyIyPIRuYOxjGcXtkY="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"SuperUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">  
 </span></code></pre></div>
-<p>This endpoint retrieves all User.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/users</code></p>
+<p>This Endpoint is available for all user types and retrieves all clients
+with a limit or offset query</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/clients</code></p>
 
 <aside class="notice">
-Paginated to <code>100</code> Per request 
+Default limit is <code>10</code> and default offset is <code>0</code>
 </aside>
-<h2 id='get-a-specific-user'>Get a Specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/2"</span>
+<h2 id='get-all-admins'>Get All Admins</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/admins?limit=2"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
 <blockquote>
-<p>Response looks like this</p>
+<p>Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ada@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@mail.kovatek.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xx4V7yFm3vc1L6Rrn70EJ_RKv0_E-402X_IDRSIi4xE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"SuperUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">  
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">  
 </span></code></pre></div>
-<p>This endpoint retrieves a specific User.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<p>This Endpoint is available for admin and super users and retrieves all admins
+with a limit or offset query</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/admins</code></p>
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+<h2 id='get-all-supers'>Get All Supers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/supers?offset=5"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baba@super.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"super@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boss@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">  
+</span></code></pre></div>
+<p>This Endpoint is available for Super users and retrieves all supers
+with a limit or offset query</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/supers</code></p>
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+<h2 id='get-all-user-types'>Get All User Types</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/supers?offset=200"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev@dev.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@client.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$Wwp/kFBMAW0AOuZKlxjxseTloyIA3/GlYmbISSN04J5sfeb3IqhUi"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bjTm9yLCv_s0Vb2-udOfxLxy_ClKIhYnuF0uzQrAk5U="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">204</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T12:54:14.03108+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@super.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$eBB6sc7pQrqtBLeeoTieoeN9OcR5L4ORylIGNRUEqyxNml8aIPhYC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FKs1QvhTOlCf69WYhFFFe9xs9iqKQabdsHOQ2MgzxrE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">  
+</span></code></pre></div>
+<p>This Endpoint is available for only Super users and retrieves all user types
+with a limit or offset query</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/</code></p>
+
+<aside class="notice">
+Default limit is <code>10</code> and default offset is <code>0</code>
+</aside>
+<h2 id='update-user-password'>Update User Password</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"old_password":"XXXXXXXXX", "new_password":"#########"}'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/users/2"</span> 
+
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to update user passwords</p>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/users/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user to update</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-user'>Get a Specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/7"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T21:33:29.395372Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-17T21:33:29.395372Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mail.kovatek.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"KovatekID"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Password"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PasswordHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$10$mbHS13q/xm94xUS9q/w5GuYGYS2MQs20HMBC0pLsQEYKi1QA1aYQ."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Remember"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RememberHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mb4le2fAPcc_LWAPQEuYHBcuuuj2MlTp_hNCUljnMJw="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verify"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available only for all user types hierarchically.</p>
+
+<ul>
+<li>Talent can retrieve other Talents and clients only</li>
+<li>Clients can retrieve other clients and talents only</li>
+<li>Admin can retrieve other admins, clients and talents only</li>
+<li>Super can retrieve all user types</li>
+</ul>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/users/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -732,21 +1021,23 @@ Paginated to <code>100</code> Per request
 <td>The ID of the user to retrieve</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-user'>Delete a Specific User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/2"</span>
-  <span class="nt">-X</span> DELETE
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token"</span>
+<h2 id='delete-a-specific-user'>Delete a Specific User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/users/2"</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"204"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint deletes a specific user.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<p>This endpoint is available only for the user himself, 
+why would you want to delete someone else&#39;s account? lol.
+Super users can do that also anyways.</p>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>DELETE https://api.kovatek.com/users/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>

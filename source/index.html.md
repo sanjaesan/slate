@@ -702,7 +702,13 @@ curl "https://api.kovatek.com/settings/32442" \
     "EmailNewMemberAdded": false
   } 
 ```
-This Endpoint gets a specified user avatar, you can only get what you own
+This Endpoint gets a specified user settings and it's available for all user types hierarchically.
+
+* Talent can retrieve other Talents and clients only
+* Clients can retrieve other clients and talents only
+* Admin can retrieve other admins, clients and talents only
+* Super can retrieve all user types
+
 ### HTTP Request
 
 `GET http://api.kovatek.com/settings/<ID>`

@@ -794,12 +794,12 @@ This Endpoint gets all user settings, available for admin and supers
 ```shell
 curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"Firstname": "Adelowo", 
-         "Surname": "Adedeji",
-         "Phone": "0909000000",
-         "City": "Lagos",
-         "Country": "Nigeria",
-         "Skills": ["Kubernetes","CICD","Docker","Jenkins"]
+    -d '{"firstname": "Adelowo", 
+         "furname": "Adedeji",
+         "phone": "0909000000",
+         "city": "Lagos",
+         "country": "Nigeria",
+         "skills": ["Kubernetes","CICD","Docker","Jenkins"]
         }' \
     "https://api.kovatek.com/settings/32423/profile" 
 ```
@@ -807,15 +807,15 @@ curl -X PUT \
 
 ```json
 {
-  "200": "success"
+  "200": "Success"
 } 
 ```
 
 This Endpoint is available to update user profile settings
 
 ### HTTP Request
-
 `GET http://api.kovatek.com/settings/<ID>/profile`
+
 
 ### URL Parameters
 
@@ -830,9 +830,9 @@ ID | The ID of the user to update it's profile settings
 ```shell
 curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"AccountName": "Adedeji Adelowo",
-         "AccountNumber": 3060000306,
-         "BankName": "FirstBank",
+    -d '{"account_name": "Adedeji Adelowo",
+         "account_number": 3060000306,
+         "bank_name": "FirstBank",
         }' \
     "https://api.kovatek.com/settings/32423/payment" 
 ```
@@ -861,8 +861,8 @@ ID | The ID of the user to update it's payment setting
 ```shell
 curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"Language": "English",
-         "Currency": "NGN",
+    -d '{"language": "English",
+         "currency": "NGN",
         }' \
     "https://api.kovatek.com/settings/32423/account" 
 ```
@@ -890,11 +890,11 @@ ID | The ID of the user to update it's account setting
 ```shell
 curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"EmailNewsletter": true,
-         "EmailPaymentReceipt": false,
-         "EmailNewProjectUploaded": true,
-         "EmailMilestoneApproved": false,
-         "EmailNewMemberAdded": true
+    -d '{"email_newsletter": true,
+         "email_payment_receipt": false,
+         "email_new_project_uploaded": true,
+         "email_milestone_approved": false,
+         "email_new_member_added": true
         }' \
     "https://api.kovatek.com/settings/32423/notification" 
 ```

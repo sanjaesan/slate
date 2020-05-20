@@ -929,6 +929,7 @@ ID | The ID of the user to update it's notification setting
 ## Update Project
 ## Update Project Task
 ## Update Project Milestone
+## Delete Project
 
 
 # Test

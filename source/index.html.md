@@ -921,12 +921,14 @@ ID | The ID of the user to update it's notification setting
 # Projects
 
 ## Create a New Project
+## Create Task for a Project
 ## Create Milestone for a Project
-## Get a specified Project
-## Get all Projects
-## Onboard Talents for a Specific Project
-## Update a Project Milestone
+## Onboard Talents for a Project
+## Get Project
+## Get Projects
 ## Update Project
+## Update Project Task
+## Update Project Milestone
 
 
 # Test

@@ -955,7 +955,9 @@ ID | The ID of the user to update it's notification setting
 ## Update Grade
 ## Delete Grade
 
-# Interview
+# Interview 
 
 ## Create an Interview
+## Update Interview
+## Get interview
 ## Get all Interviews

@@ -1108,7 +1108,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
 ]
 ```
 
-This Endpoint is available to clients for retrieving all projects
+This Endpoint is available for retrieving client projects
 
 ### HTTP Request
 

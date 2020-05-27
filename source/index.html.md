@@ -1145,7 +1145,7 @@ ID | The ID of the project to delete
 ```shell
 curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"title": "Finteck Task 1",
+    -d '{"title": "Fintech Task 1",
          "description": "Design a mockup/prototype ......",
          "duration":1.5
         }' \
@@ -1167,12 +1167,199 @@ This Endpoint is available to Create a new task for project
 
 
 ## Update Project Task
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "description": "Design a mockup/prototype for AdobeXD ....",
+         "duration":2.0
+        }' \
+    "https://api.kovatek.com/projects/1213/tasks/1243" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update project Tasks
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id/tasks/:id`
+
+
 ## Get Project Tasks
+```shell
+curl -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/1213/tasks?offset=2&limit=50" 
+```
+> Response
+
+```json
+[  
+  
+  {
+    "ID": 193,
+    "CreatedAt": "2020-05-26T09:49:51.275097+01:00",
+    "UpdatedAt": "2020-05-26T09:49:51.275097+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Fintech Task 1",
+    "Description": "Design a mockup/prototype for AdobeXD",
+    "Duration": 2.0
+    },
+    {
+    "ID": 3134,
+    "CreatedAt": "2020-05-26T09:50:07.268814+01:00",
+    "UpdatedAt": "2020-05-26T09:53:23.821169+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Fintech Task 2",
+    "Description": "Convert UI mockups into front-end using sveltejs",
+    "Duration": 15
+    },
+    {
+    "ID": 3136,
+    "CreatedAt": "2020-05-26T09:51:20.23034+01:00",
+    "UpdatedAt": "2020-05-26T09:51:20.23034+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Fintech Task 3",
+    "Description": "Write Integration Tests for your sveltejs components",
+    "Duration": 2.5
+    },
+    {
+    "ID": 5456,
+    "CreatedAt": "2020-05-26T13:00:00.835402+01:00",
+    "UpdatedAt": "2020-05-26T19:57:51.302944+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Fintech Task 4",
+    "Description": "Integrating Backend API's",
+    "Duration": 20
+  }
+]
+```
+
+This Endpoint is available for retrieving project tasks
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id/tasks`
+
 ## New Project Milestone
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"title": "Milestone 1",
+         "description": "This Milestone involves ...",
+         "duration":1.5
+        }' \
+    "https://api.kovatek.com/projects/1213/milestones" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Create a new milestone for project
+
+### HTTP Request
+
+`GET http://api.kovatek.com/project/<id>/milestones`
+
 ## Update Project Milestone
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "description": "This milestones involves creating ....",
+         "duration":2.0
+        }' \
+    "https://api.kovatek.com/projects/1213/milestones/1243" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update project Tasks
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id/milestones/:id`
+
 ## Get Project Milestones
+```shell
+curl -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/1213/milestones?offset=2&limit=50" 
+```
+> Response
+
+```json
+[  
+  
+  {
+    "ID": 86,
+    "CreatedAt": "2020-05-26T09:49:51.275097+01:00",
+    "UpdatedAt": "2020-05-26T09:49:51.275097+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Milestone 1",
+    "Description": "This milestone involves creating ...",
+    "Duration": 2.0
+    },
+    {
+    "ID": 413,
+    "CreatedAt": "2020-05-26T09:50:07.268814+01:00",
+    "UpdatedAt": "2020-05-26T09:53:23.821169+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Milestone two",
+    "Description": "Creating and documentation of ....",
+    "Duration": 6
+    }
+]
+```
+
+This Endpoint is available for retrieving a specific project milestones
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id/milestones`
+
 ## Onboard Talents for a Project
 
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"kovatek_id": "KD3X2V4BM2",
+         "wages": 100.00
+        }' \
+    "https://api.kovatek.com/projects/1213/onboard" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to onboard talents for a project
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/<id>/onboard`
 
 # Test
 

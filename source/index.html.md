@@ -920,16 +920,260 @@ ID | The ID of the user to update it's notification setting
 
 # Projects
 
-## Create a New Project
-## Create Task for a Project
-## Create Milestone for a Project
-## Onboard Talents for a Project
-## Get Project
-## Get Projects
+
+Fields | Type | Required | Description 
+--------- | ---- | ---------| -----------
+title | string | true | A short project title.
+description | string | true | detailed project description.
+talent_size | integer | false | max number of developers to onboard.
+skills | Array | true | technical requirements.
+duration | float | true|  expressed in days
+complexity | integer| true | complexity of the project
+Payment_amount | float | true | amount budgeted for the project
+
+**Project Complexity**
+
+Complexity |  Value 
+--------- | ------- 
+Easy | 1
+Medium | 2
+Difficult | 3 
+
+## New Project
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"title": "JB Finance",
+         "description": "A Fintech project that connect banks to logistic company",
+         "talent_size": 5,
+         "skills":["Reactjs, "Nodejs", "Grpc", "Protobuf"],
+         "duration":90
+        }' \
+    "https://api.kovatek.com/projects" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Create New project
+
+### HTTP Request
+
+`GET http://api.kovatek.com/project`
+
+<aside class="notice">
+Only <code>Client</code> user can create a <code>Project</code>
+</aside>
+
 ## Update Project
-## Update Project Task
-## Update Project Milestone
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "description": "A Fintech project that connect banks to logistic company",
+         "talent_size": 5,
+         "skills":["Sveltejs, "Haskell", "Grpc", "Protobuf"],
+         "duration":95
+        }' \
+    "https://api.kovatek.com/projects/1213" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update created projects
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id`
+
+## Get Project
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/1213" 
+```
+> Response
+
+```json
+{  
+  "ID": 1213,
+  "CreatedAt": "2020-05-26T05:18:32.142905+01:00",
+  "UpdatedAt": "2020-05-26T05:28:49.409624+01:00",
+  "DeletedAt": null,
+  "Title": "JB finance",
+  "Description": "A project",
+  "ClientID": 1342,
+  "Duration": 95,
+  "Complexity": 0,
+  "Status": 0,
+  "TalentSize": 5,
+  "PaymentAmount": 0,
+  "Skills":[
+    "Sveltejs",
+    "Haskell",
+    "Grpc",
+    "Protobuf"
+    ]
+} 
+```
+
+This Endpoint is available to Update created projects
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id`
+
+## Get Projects
+```shell
+curl -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects?offset=2&limit=50" 
+```
+> Response
+
+```json
+[  
+  {
+    "ID": 1213,
+    "CreatedAt": "2020-05-26T05:18:32.142905+01:00",
+    "UpdatedAt": "2020-05-26T05:28:49.409624+01:00",
+    "DeletedAt": null,
+    "Title": "Fintech",
+    "Description": "A Fintech project that connects banks to logistics company",
+    "ClientID": 1342,
+    "Duration": 95,
+    "Complexity": 0,
+    "Status": 0,
+    "TalentSize": 5,
+    "PaymentAmount": 0,
+    "Skills":[
+      "Sveltejs",
+      "Haskell",
+      "Grpc",
+      "Protobuf"
+      ]
+  },
+  {
+    "ID": 1382,
+    "CreatedAt": "2020-05-26T05:18:32.142905+01:00",
+    "UpdatedAt": "2020-05-26T05:28:49.409624+01:00",
+    "DeletedAt": null,
+    "Title": "AR/VR Project",
+    "Description": "A VR project ....",
+    "ClientID": 1342,
+    "Duration": 95,
+    "Complexity": 0,
+    "Status": 0,
+    "TalentSize": 8,
+    "PaymentAmount": 0,
+    "Skills":[
+      "Unity",
+      "C++",
+      "Computer Graphics",
+      "GluonCV"
+      ]
+  },
+  {
+    "ID": 1503,
+    "CreatedAt": "2020-05-26T05:18:32.142905+01:00",
+    "UpdatedAt": "2020-05-26T05:28:49.409624+01:00",
+    "DeletedAt": null,
+    "Title": "Ehailing Platform",
+    "Description": "A Distibuted & Decentralised Ehailing System",
+    "ClientID": 1342,
+    "Duration": 100,
+    "Complexity": 0,
+    "Status": 0,
+    "TalentSize": 10,
+    "PaymentAmount": 0,
+    "Skills":[
+      "Blockchain",
+      "Truffle",
+      "Open Zeppellin"
+      "Ganache"
+      "Solidity",
+      "Serpent",
+      "LLL",
+      "Hyperledger"
+      ]
+  },
+]
+```
+
+This Endpoint is available to clients for retrieving all projects
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects`
+
 ## Delete Project
+```shell
+curl "https://api.kovatek.com/projects/1382" \
+  -X DELETE \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+
+> Response
+
+```json
+{
+  "message":"204"
+}
+```
+
+This Endpoint is available to remove a Project
+
+### HTTP Request
+
+`DELETE https://api.kovatek.com/projects/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project to delete
+
+## New Project Task
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"title": "Finteck Task 1",
+         "description": "Design a mockup/prototype ......",
+         "duration":1.5
+        }' \
+    "https://api.kovatek.com/projects/1213/tasks" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Create a new task for project
+
+### HTTP Request
+
+`GET http://api.kovatek.com/project/<id>/tasks`
+
+
+## Update Project Task
+## Get Project Tasks
+## New Project Milestone
+## Update Project Milestone
+## Get Project Milestones
+## Onboard Talents for a Project
+
+
 
 
 # Test

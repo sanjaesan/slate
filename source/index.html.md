@@ -1226,6 +1226,166 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the project to delete
 
+## New Project Bidding 
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"cover_letter": "My cover letter, bidding for project JB finance",
+         "bill_amount": 1250,
+         "delivery_time": 60,
+         "milestones": [
+           {
+             "title": "Login Setup",
+             "amount": 300,
+             "due_date": "Monday, 20th of January, 2020"
+           },
+           {
+             "title": "API Integration",
+             "amount": 89,
+             "due_date": "Monday, 20th of January, 2020"
+           },
+           {
+             "title": "Front End",
+             "amount": 400,
+             "due_date": "Monday, 20th of January, 2020"
+           }
+         ]
+        }' \
+    "https://api.kovatek.com/projects/1213/biddings" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available for talents to Create a new bidding for a project
+
+### HTTP Request
+
+`POST http://api.kovatek.com/project/<id>/biddings`
+
+## Update Project Bidding
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "cover_letter": "My cover letter, bidding for project JB finance",
+         "bill_amount": 1250,
+         "delivery_time": 60,
+         "milestones": []
+        }' \
+    "https://api.kovatek.com/projects/1213/biddings/111" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update project Biddings
+
+### HTTP Request
+
+`PUT http://api.kovatek.com/projects/:id/biddings/:id`
+
+<aside class="notice">
+<code>Milestones</code> array fails to update currently 
+</aside>
+
+## Get Project Biddings
+```shell
+curl -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/1213/biddings" 
+```
+> Response
+
+```json
+[  
+  {
+    "ID": 111,
+    "CreatedAt": "2020-06-01T19:26:02.914206+01:00",
+    "UpdatedAt": "2020-06-01T20:10:13.869743+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "TalentID": 577,
+    "CoverLetter": "My cover letter, bidding for project JB finance",
+    "BillAmount": 1250,
+    "DeliveryTime": 60,
+    "Milestones":
+    [
+      {
+        "ID": 9543,
+        "CreatedAt": "2020-06-01T19:26:02.960457+01:00",
+        "UpdatedAt": "2020-06-01T19:26:02.960457+01:00",
+        "DeletedAt": null,
+        "ProjectID": 1213,
+        "BiddingID": 111,
+        "Title": "Login Setup",
+        "Amount": 300,
+        "DueDate": "Monday, 20th of January, 2020"
+      },
+      {
+        "ID": 9544,
+        "CreatedAt": "2020-06-01T19:26:02.969782+01:00",
+        "UpdatedAt": "2020-06-01T19:26:02.969782+01:00",
+        "DeletedAt": null,
+        "ProjectID": 1213,
+        "BiddingID": 111,
+        "Title": "API Integration",
+        "Amount": 89,
+        "DueDate": "Monday, 20th of January, 2020"
+      },
+      {
+        "ID": 9545,
+        "CreatedAt": "2020-06-01T19:26:02.977086+01:00",
+        "UpdatedAt": "2020-06-01T19:26:02.977086+01:00",
+        "DeletedAt": null,
+        "ProjectID": 1213,
+        "BiddingID": 111,
+        "Title": "Front End",
+        "Amount": 400,
+        "DueDate": "Monday, 20th of January, 2020"
+      }
+    ]
+  }
+]
+```
+
+This Endpoint is available for clients to retrieve all biddings available for a specified project
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id/biddings`
+
+## Onboard Talents for a Project
+
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"kovatek_id": "KD3X2V4BM2",
+         "wages": 100.00
+        }' \
+    "https://api.kovatek.com/projects/1213/onboard" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to onboard talents for a project
+
+### HTTP Request
+
+`POST http://api.kovatek.com/projects/<id>/onboard`
+
 ## New Project Task
 ```shell
 curl -X POST \
@@ -1248,7 +1408,7 @@ This Endpoint is available to Create a new task for project
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/project/<id>/tasks`
+`POST http://api.kovatek.com/project/<id>/tasks`
 
 
 ## Update Project Task
@@ -1273,7 +1433,7 @@ This Endpoint is available to Update project Tasks
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/projects/:id/tasks/:id`
+`PUT http://api.kovatek.com/projects/:id/tasks/:id`
 
 
 ## Get Project Tasks
@@ -1335,7 +1495,7 @@ This Endpoint is available for retrieving project tasks
 
 `GET http://api.kovatek.com/projects/:id/tasks`
 
-## New Project Milestone
+<!-- ## New Project Milestone
 ```shell
 curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" \
@@ -1357,7 +1517,7 @@ This Endpoint is available to Create a new milestone for project
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/project/<id>/milestones`
+`POST http://api.kovatek.com/project/<id>/milestones`
 
 ## Update Project Milestone
 ```shell
@@ -1381,7 +1541,7 @@ This Endpoint is available to Update project Tasks
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/projects/:id/milestones/:id`
+`PUT http://api.kovatek.com/projects/:id/milestones/:id`
 
 ## Get Project Milestones
 ```shell
@@ -1420,31 +1580,8 @@ This Endpoint is available for retrieving a specific project milestones
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/projects/:id/milestones`
+`GET http://api.kovatek.com/projects/:id/milestones` -->
 
-## Onboard Talents for a Project
-
-```shell
-curl -X POST \
-    -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"kovatek_id": "KD3X2V4BM2",
-         "wages": 100.00
-        }' \
-    "https://api.kovatek.com/projects/1213/onboard" 
-```
-> Response
-
-```json
-{
-  "200": "success"
-} 
-```
-
-This Endpoint is available to onboard talents for a project
-
-### HTTP Request
-
-`GET http://api.kovatek.com/projects/<id>/onboard`
 
 # Test
 

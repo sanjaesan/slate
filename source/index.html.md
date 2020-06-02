@@ -918,6 +918,89 @@ Parameter | Description
 --------- | ------- 
 ID | The ID of the user to update it's notification setting
 
+
+# Profiles
+The Profile Objects holds profile data.
+
+**Seniority Level**
+
+Level |  Value 
+--------- | ------- 
+Junior | 1
+Intermediate | 2
+Senior | 3 
+
+
+## Get Profile
+
+```shell
+curl "https://api.kovatek.com/profiles/2132" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  {
+    "ID": 1,
+    "CreatedAt": "2020-05-31T09:39:23.548454+01:00",
+    "UpdatedAt": "2020-05-31T09:39:23.548454+01:00",
+    "DeletedAt": null,
+    "UserID": 2132,
+    "Title": "Web Developer",
+    "AboutMe": "I am backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
+    "MoreDetails": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let's get in touch.",
+    "SeniorityLevel": 2,
+    "ProjectsCompleted": 4,
+    "ProjectsLeaded": 0,
+    "RemoteJobsCompleted": 0,
+    "WorkRate": 30,
+    "SkillScore": 0,
+    "TotalTests": 0,
+    "Reviews": 0,
+    "WorkExperience": 7,
+    "Interviews": 0,
+    "CurrentlyHired": false,
+    "ScheduleInterview": null
+  } 
+```
+This Endpoint gets a specified talent profile
+### HTTP Request
+
+`GET http://api.kovatek.com/profile/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the talent to retrieve profile
+
+## Edit Profile
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "Title": "Web Developer",
+         "about_me": "I am a backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
+         "seniority_level": 2,
+         "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
+         "work_experience": 7
+        }' \
+    "https://api.kovatek.com/profiles/2132" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update talent profile
+
+### HTTP Request
+
+`PUT http://api.kovatek.com/profiles/:id`
+
 # Projects
 
 
@@ -929,7 +1012,8 @@ talent_size | integer | false | max number of developers to onboard.
 skills | Array | true | technical requirements.
 duration | float | true|  expressed in days
 complexity | integer| true | complexity of the project
-Payment_amount | float | true | amount budgeted for the project
+start_budget | float | true | minimum budgeted for the project
+end_budget | float | true | maximum budgeted for the project
 
 **Project Complexity**
 
@@ -993,7 +1077,7 @@ This Endpoint is available to Update created projects
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/projects/:id`
+`PUT http://api.kovatek.com/projects/:id`
 
 ## Get Project
 ```shell
@@ -1016,7 +1100,8 @@ curl -X PUT \
   "Complexity": 0,
   "Status": 0,
   "TalentSize": 5,
-  "PaymentAmount": 0,
+  "StartBudget": 500,
+  "EndBudget":750
   "Skills":[
     "Sveltejs",
     "Haskell",

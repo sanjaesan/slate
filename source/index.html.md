@@ -1275,7 +1275,9 @@ curl -X PUT \
          "cover_letter": "My cover letter, bidding for project JB finance",
          "bill_amount": 1250,
          "delivery_time": 60,
-         "milestones": []
+         "milestones": [
+           
+         ]
         }' \
     "https://api.kovatek.com/projects/1213/biddings/111" 
 ```

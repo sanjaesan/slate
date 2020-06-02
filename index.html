@@ -311,6 +311,17 @@
               </ul>
           </li>
           <li>
+            <a href="#profiles" class="toc-h1 toc-link" data-title="Profiles">Profiles</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-profile" class="toc-h2 toc-link" data-title="Get Profile">Get Profile</a>
+                  </li>
+                  <li>
+                    <a href="#edit-profile" class="toc-h2 toc-link" data-title="Edit Profile">Edit Profile</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#projects" class="toc-h1 toc-link" data-title="Projects">Projects</a>
               <ul class="toc-list-h2">
                   <li>
@@ -329,6 +340,18 @@
                     <a href="#delete-project" class="toc-h2 toc-link" data-title="Delete Project">Delete Project</a>
                   </li>
                   <li>
+                    <a href="#new-project-bidding" class="toc-h2 toc-link" data-title="New Project Bidding">New Project Bidding</a>
+                  </li>
+                  <li>
+                    <a href="#update-project-bidding" class="toc-h2 toc-link" data-title="Update Project Bidding">Update Project Bidding</a>
+                  </li>
+                  <li>
+                    <a href="#get-project-biddings" class="toc-h2 toc-link" data-title="Get Project Biddings">Get Project Biddings</a>
+                  </li>
+                  <li>
+                    <a href="#onboard-talents-for-a-project" class="toc-h2 toc-link" data-title="Onboard Talents for a Project">Onboard Talents for a Project</a>
+                  </li>
+                  <li>
                     <a href="#new-project-task" class="toc-h2 toc-link" data-title="New Project Task">New Project Task</a>
                   </li>
                   <li>
@@ -336,18 +359,6 @@
                   </li>
                   <li>
                     <a href="#get-project-tasks" class="toc-h2 toc-link" data-title="Get Project Tasks">Get Project Tasks</a>
-                  </li>
-                  <li>
-                    <a href="#new-project-milestone" class="toc-h2 toc-link" data-title="New Project Milestone">New Project Milestone</a>
-                  </li>
-                  <li>
-                    <a href="#update-project-milestone" class="toc-h2 toc-link" data-title="Update Project Milestone">Update Project Milestone</a>
-                  </li>
-                  <li>
-                    <a href="#get-project-milestones" class="toc-h2 toc-link" data-title="Get Project Milestones">Get Project Milestones</a>
-                  </li>
-                  <li>
-                    <a href="#onboard-talents-for-a-project" class="toc-h2 toc-link" data-title="Onboard Talents for a Project">Onboard Talents for a Project</a>
                   </li>
               </ul>
           </li>
@@ -1343,6 +1354,95 @@ Super users can do that also anyways.</p>
 <td>The ID of the user to update it&#39;s notification setting</td>
 </tr>
 </tbody></table>
+<h1 id='profiles'>Profiles</h1>
+<p>The Profile Objects holds profile data.</p>
+
+<p><strong>Seniority Level</strong></p>
+
+<table><thead>
+<tr>
+<th>Level</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Junior</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Intermediate</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Senior</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2 id='get-profile'>Get Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/profiles/2132"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T09:39:23.548454+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T09:39:23.548454+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UserID"</span><span class="p">:</span><span class="w"> </span><span class="mi">2132</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Developer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"AboutMe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am backend developer with more than 7 years experience on web development. My excellent knowledge includes:"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"MoreDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am problem solving, eager to learn new things if needed, Does Something works for you? Let's get in touch."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SeniorityLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ProjectsCompleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ProjectsLeaded"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RemoteJobsCompleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"WorkRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SkillScore"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"TotalTests"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Reviews"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"WorkExperience"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Interviews"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CurrentlyHired"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ScheduleInterview"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint gets a specified talent profile</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/profile/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-10'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the talent to retrieve profile</td>
+</tr>
+</tbody></table>
+<h2 id='edit-profile'>Edit Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+         "Title": "Web Developer",
+         "about_me": "I am a backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
+         "seniority_level": 2,
+         "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
+         "work_experience": 7
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/profiles/2132"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to Update talent profile</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>PUT http://api.kovatek.com/profiles/:id</code></p>
 <h1 id='projects'>Projects</h1>
 <table><thead>
 <tr>
@@ -1389,10 +1489,16 @@ Super users can do that also anyways.</p>
 <td>complexity of the project</td>
 </tr>
 <tr>
-<td>Payment_amount</td>
+<td>start_budget</td>
 <td>float</td>
 <td>true</td>
-<td>amount budgeted for the project</td>
+<td>minimum budgeted for the project</td>
+</tr>
+<tr>
+<td>end_budget</td>
+<td>float</td>
+<td>true</td>
+<td>maximum budgeted for the project</td>
 </tr>
 </tbody></table>
 
@@ -1435,7 +1541,7 @@ Super users can do that also anyways.</p>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Create New project</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/project</code></p>
 
 <aside class="notice">
@@ -1459,8 +1565,8 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update created projects</p>
-<h3 id='http-request-23'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/projects/:id</code></p>
+<h3 id='http-request-25'>HTTP Request</h3>
+<p><code>PUT http://api.kovatek.com/projects/:id</code></p>
 <h2 id='get-project'>Get Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213"</span> 
@@ -1480,7 +1586,8 @@ Only <code>Client</code> user can create a <code>Project</code>
   </span><span class="nl">"Complexity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"TalentSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"PaymentAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"StartBudget"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"EndBudget"</span><span class="p">:</span><span class="mi">750</span><span class="w">
   </span><span class="nl">"Skills"</span><span class="p">:[</span><span class="w">
     </span><span class="s2">"Sveltejs"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Haskell"</span><span class="p">,</span><span class="w">
@@ -1490,7 +1597,7 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update created projects</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id</code></p>
 <h2 id='get-projects'>Get Projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects?offset=2&amp;limit=50"</span> 
@@ -1566,7 +1673,7 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for retrieving client projects</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects</code></p>
 <h2 id='delete-project'>Delete Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/projects/1382"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
@@ -1580,9 +1687,9 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available to remove a Project</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>DELETE https://api.kovatek.com/projects/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1594,6 +1701,143 @@ Only <code>Client</code> user can create a <code>Project</code>
 <td>The ID of the project to delete</td>
 </tr>
 </tbody></table>
+<h2 id='new-project-bidding'>New Project Bidding</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"cover_letter": "My cover letter, bidding for project JB finance",
+         "bill_amount": 1250,
+         "delivery_time": 60,
+         "milestones": [
+           {
+             "title": "Login Setup",
+             "amount": 300,
+             "due_date": "Monday, 20th of January, 2020"
+           },
+           {
+             "title": "API Integration",
+             "amount": 89,
+             "due_date": "Monday, 20th of January, 2020"
+           },
+           {
+             "title": "Front End",
+             "amount": 400,
+             "due_date": "Monday, 20th of January, 2020"
+           }
+         ]
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/projects/1213/biddings"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available for talents to Create a new bidding for a project</p>
+<h3 id='http-request-29'>HTTP Request</h3>
+<p><code>POST http://api.kovatek.com/project/&lt;id&gt;/biddings</code></p>
+<h2 id='update-project-bidding'>Update Project Bidding</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+         "cover_letter": "My cover letter, bidding for project JB finance",
+         "bill_amount": 1250,
+         "delivery_time": 60,
+         "milestones": [
+
+         ]
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/projects/1213/biddings/111"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to Update project Biddings</p>
+<h3 id='http-request-30'>HTTP Request</h3>
+<p><code>PUT http://api.kovatek.com/projects/:id/biddings/:id</code></p>
+
+<aside class="notice">
+<code>Milestones</code> array fails to update currently 
+</aside>
+<h2 id='get-project-biddings'>Get Project Biddings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/projects/1213/biddings"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.914206+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T20:10:13.869743+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ProjectID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"TalentID"</span><span class="p">:</span><span class="w"> </span><span class="mi">577</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CoverLetter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My cover letter, bidding for project JB finance"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"BillAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1250</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Milestones"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">9543</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.960457+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.960457+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ProjectID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"BiddingID"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Login Setup"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monday, 20th of January, 2020"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">9544</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.969782+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.969782+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ProjectID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"BiddingID"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API Integration"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">89</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monday, 20th of January, 2020"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">9545</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.977086+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-01T19:26:02.977086+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ProjectID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"BiddingID"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Front End"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monday, 20th of January, 2020"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This Endpoint is available for clients to retrieve all biddings available for a specified project</p>
+<h3 id='http-request-31'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/projects/:id/biddings</code></p>
+<h2 id='onboard-talents-for-a-project'>Onboard Talents for a Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{"kovatek_id": "KD3X2V4BM2",
+         "wages": 100.00
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/projects/1213/onboard"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to onboard talents for a project</p>
+<h3 id='http-request-32'>HTTP Request</h3>
+<p><code>POST http://api.kovatek.com/projects/&lt;id&gt;/onboard</code></p>
 <h2 id='new-project-task'>New Project Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{"title": "Fintech Task 1",
@@ -1610,8 +1854,8 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Create a new task for project</p>
-<h3 id='http-request-27'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/project/&lt;id&gt;/tasks</code></p>
+<h3 id='http-request-33'>HTTP Request</h3>
+<p><code>POST http://api.kovatek.com/project/&lt;id&gt;/tasks</code></p>
 <h2 id='update-project-task'>Update Project Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{
@@ -1628,8 +1872,8 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update project Tasks</p>
-<h3 id='http-request-28'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/projects/:id/tasks/:id</code></p>
+<h3 id='http-request-34'>HTTP Request</h3>
+<p><code>PUT http://api.kovatek.com/projects/:id/tasks/:id</code></p>
 <h2 id='get-project-tasks'>Get Project Tasks</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/tasks?offset=2&amp;limit=50"</span> 
 </code></pre></div>
@@ -1681,94 +1925,95 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for retrieving project tasks</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id/tasks</code></p>
-<h2 id='new-project-milestone'>New Project Milestone</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
-    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"title": "Milestone 1",
+
+<!-- ## New Project Milestone
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"title": "Milestone 1",
          "description": "This Milestone involves ...",
          "duration":1.5
-        }'</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/projects/1213/milestones"</span> 
-</code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
-</span></code></pre></div>
-<p>This Endpoint is available to Create a new milestone for project</p>
-<h3 id='http-request-30'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/project/&lt;id&gt;/milestones</code></p>
-<h2 id='update-project-milestone'>Update Project Milestone</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
-    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{
+        }' \
+    "https://api.kovatek.com/projects/1213/milestones" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Create a new milestone for project
+
+### HTTP Request
+
+`POST http://api.kovatek.com/project/<id>/milestones`
+
+## Update Project Milestone
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
          "description": "This milestones involves creating ....",
          "duration":2.0
-        }'</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/projects/1213/milestones/1243"</span> 
-</code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
-</span></code></pre></div>
-<p>This Endpoint is available to Update project Tasks</p>
-<h3 id='http-request-31'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/projects/:id/milestones/:id</code></p>
-<h2 id='get-project-milestones'>Get Project Milestones</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/projects/1213/milestones?offset=2&amp;limit=50"</span> 
-</code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+        }' \
+    "https://api.kovatek.com/projects/1213/milestones/1243" 
+```
+> Response
 
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">86</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-26T09:49:51.275097+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-26T09:49:51.275097+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ProjectID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Milestone 1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This milestone involves creating ..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">413</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-26T09:50:07.268814+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-26T09:53:23.821169+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ProjectID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Milestone two"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Creating and documentation of ...."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This Endpoint is available for retrieving a specific project milestones</p>
-<h3 id='http-request-32'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/projects/:id/milestones</code></p>
-<h2 id='onboard-talents-for-a-project'>Onboard Talents for a Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
-    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"kovatek_id": "KD3X2V4BM2",
-         "wages": 100.00
-        }'</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/projects/1213/onboard"</span> 
-</code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
-</span></code></pre></div>
-<p>This Endpoint is available to onboard talents for a project</p>
-<h3 id='http-request-33'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/projects/&lt;id&gt;/onboard</code></p>
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update project Tasks
+
+### HTTP Request
+
+`PUT http://api.kovatek.com/projects/:id/milestones/:id`
+
+## Get Project Milestones
+```shell
+curl -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/1213/milestones?offset=2&limit=50" 
+```
+> Response
+
+```json
+[  
+  
+  {
+    "ID": 86,
+    "CreatedAt": "2020-05-26T09:49:51.275097+01:00",
+    "UpdatedAt": "2020-05-26T09:49:51.275097+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Milestone 1",
+    "Description": "This milestone involves creating ...",
+    "Duration": 2.0
+    },
+    {
+    "ID": 413,
+    "CreatedAt": "2020-05-26T09:50:07.268814+01:00",
+    "UpdatedAt": "2020-05-26T09:53:23.821169+01:00",
+    "DeletedAt": null,
+    "ProjectID": 1213,
+    "Title": "Milestone two",
+    "Description": "Creating and documentation of ....",
+    "Duration": 6
+    }
+]
+```
+
+This Endpoint is available for retrieving a specific project milestones
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/:id/milestones` -->
 <h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='update-interview'>Update Interview</h2><h2 id='get-interview'>Get interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section helps you have a clue of what you are doing wrong

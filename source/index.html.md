@@ -1332,7 +1332,6 @@ curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
     -d '{
          "cover_letter": "My cover letter, bidding for project JB finance",
-         "bill_amount": 1250,
          "delivery_time": 60
         }' \
     "https://api.kovatek.com/projects/1213/biddings/111" 

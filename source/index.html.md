@@ -1290,7 +1290,6 @@ ID | The ID of the project to delete
 curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" \
     -d '{"cover_letter": "My cover letter, bidding for project JB finance",
-         "bill_amount": 1250,
          "delivery_time": 60,
          "milestones": [
            {

@@ -1643,7 +1643,7 @@ Super users can do that also anyways.</p>
 </span></code></pre></div>
 <p>This Endpoint is available to Create New project</p>
 <h3 id='http-request-24'>HTTP Request</h3>
-<p><code>POST http://api.kovatek.com/project</code></p>
+<p><code>POST http://api.kovatek.com/projects</code></p>
 
 <aside class="notice">
 Only <code>Client</code> user can create a <code>Project</code>
@@ -1715,7 +1715,7 @@ All fields except <code>title</code> are updateable
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
-<p>This Endpoint is available to retrieve specific project</p>
+<p>This Endpoint is available for clients to retrieve specific project</p>
 <h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id</code></p>
 <h2 id='get-projects'>Get Projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -1791,7 +1791,7 @@ All fields except <code>title</code> are updateable
   </span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This Endpoint is available for retrieving client projects</p>
+<p>This Endpoint is available for clients to retrieve all projects</p>
 <h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects</code></p>
 <h2 id='delete-project'>Delete Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/projects/1382"</span> <span class="se">\</span>
@@ -1872,10 +1872,6 @@ All fields except <code>title</code> are updateable
 <p>This Endpoint is available to Update project Biddings</p>
 <h3 id='http-request-31'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/biddings/:idd</code></p>
-
-<!-- <aside class="notice">
-<code>Milestones</code> array fails to update currently 
-</aside> -->
 <h2 id='get-project-biddings'>Get Project Biddings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/biddings"</span> 
 </code></pre></div>

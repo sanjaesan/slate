@@ -1005,23 +1005,53 @@ This Endpoint is available to Update talent profile
 
 
 Fields | Type | Required | Description 
---------- | ---- | ---------| -----------
+--------- | ---- | :------:| -----------
 title | string | true | A short project title.
 description | string | true | detailed project description.
 talent_size | integer | false | max number of developers to onboard.
 skills | Array | true | technical requirements.
-duration | float | true|  expressed in days
+duration | integer | true|  expressed in days
 complexity | integer| true | complexity of the project
+commitment | integer| true | project commitment period
 start_budget | float | true | minimum budgeted for the project
 end_budget | float | true | maximum budgeted for the project
 
-**Project Complexity**
+**Project Duration**        
 
-Complexity |  Value 
---------- | ------- 
-Easy | 1
+Duration |  Value    
+--------- | :-------:    
+OneMonth | 1               
+ThreeMonths | 2
+SixMonths | 3 
+Undefined | 4
+
+
+**Project Complexity**        
+
+Complexity |  Value    
+--------- | :-----:    
+Easy | 1               
 Medium | 2
 Difficult | 3 
+
+**Project Commitment**        
+
+Commitment |  Value    
+--------- | :---:    
+Hourly | 1               
+Daily | 2
+Weekly | 3 
+
+**Project Status**   
+
+Status |  Value
+--------- | :---:  
+Created | 1  
+Hiring | 2
+Closed | 3  
+Ongoing | 4
+Archived | 5
+Completed | 6
 
 ## New Project
 ```shell
@@ -1031,7 +1061,11 @@ curl -X POST \
          "description": "A Fintech project that connect banks to logistic company",
          "talent_size": 5,
          "skills":["Reactjs, "Nodejs", "Grpc", "Protobuf"],
-         "duration":90
+         "duration":4,
+         "commitment":2,
+         "complexity":1,
+         "start_budget":3000,
+         "end_budget":5000
         }' \
     "https://api.kovatek.com/projects" 
 ```
@@ -1047,7 +1081,7 @@ This Endpoint is available to Create New project
 
 ### HTTP Request
 
-`GET http://api.kovatek.com/project`
+`POST http://api.kovatek.com/project`
 
 <aside class="notice">
 Only <code>Client</code> user can create a <code>Project</code>
@@ -1061,7 +1095,7 @@ curl -X PUT \
          "description": "A Fintech project that connect banks to logistic company",
          "talent_size": 5,
          "skills":["Sveltejs, "Haskell", "Grpc", "Protobuf"],
-         "duration":95
+         "duration":3
         }' \
     "https://api.kovatek.com/projects/1213" 
 ```
@@ -1078,6 +1112,30 @@ This Endpoint is available to Update created projects
 ### HTTP Request
 
 `PUT http://api.kovatek.com/projects/:id`
+
+<aside class="notice">
+All fields except <code>title</code> are updateable
+</aside>
+
+## Update Project Status
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/status/1213?status=5" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update projects status
+
+### HTTP Request
+
+`PUT http://api.kovatek.com/projects/status/:id`
 
 ## Get Project
 ```shell
@@ -1111,7 +1169,7 @@ curl -X PUT \
 } 
 ```
 
-This Endpoint is available to Update created projects
+This Endpoint is available to retrieve specific project
 
 ### HTTP Request
 
@@ -1214,7 +1272,7 @@ curl "https://api.kovatek.com/projects/1382" \
 }
 ```
 
-This Endpoint is available to remove a Project
+This Endpoint is available to remove a Project by an admin or super user 
 
 ### HTTP Request
 
@@ -1225,6 +1283,7 @@ This Endpoint is available to remove a Project
 Parameter | Description
 --------- | -----------
 ID | The ID of the project to delete
+
 
 ## New Project Bidding 
 ```shell
@@ -1274,10 +1333,7 @@ curl -X PUT \
     -d '{
          "cover_letter": "My cover letter, bidding for project JB finance",
          "bill_amount": 1250,
-         "delivery_time": 60,
-         "milestones": [
-           
-         ]
+         "delivery_time": 60
         }' \
     "https://api.kovatek.com/projects/1213/biddings/111" 
 ```
@@ -1293,11 +1349,11 @@ This Endpoint is available to Update project Biddings
 
 ### HTTP Request
 
-`PUT http://api.kovatek.com/projects/:id/biddings/:id`
+`PUT http://api.kovatek.com/projects/:id/biddings/:idd`
 
-<aside class="notice">
+<!-- <aside class="notice">
 <code>Milestones</code> array fails to update currently 
-</aside>
+</aside> -->
 
 ## Get Project Biddings
 ```shell
@@ -1317,7 +1373,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
     "TalentID": 577,
     "CoverLetter": "My cover letter, bidding for project JB finance",
     "BillAmount": 1250,
-    "DeliveryTime": 60,
+    "DeliveryDays": 60,
     "Milestones":
     [
       {
@@ -1329,7 +1385,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
         "BiddingID": 111,
         "Title": "Login Setup",
         "Amount": 300,
-        "DueDate": "Monday, 20th of January, 2020"
+        "Due": "Monday, 20th of January, 2020"
       },
       {
         "ID": 9544,
@@ -1340,7 +1396,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
         "BiddingID": 111,
         "Title": "API Integration",
         "Amount": 89,
-        "DueDate": "Monday, 20th of January, 2020"
+        "Due": "Monday, 20th of January, 2020"
       },
       {
         "ID": 9545,
@@ -1351,7 +1407,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
         "BiddingID": 111,
         "Title": "Front End",
         "Amount": 400,
-        "DueDate": "Monday, 20th of January, 2020"
+        "Due": "Monday, 20th of January, 2020"
       }
     ]
   }
@@ -1364,15 +1420,80 @@ This Endpoint is available for clients to retrieve all biddings available for a 
 
 `GET http://api.kovatek.com/projects/:id/biddings`
 
+## New Project Milestone 
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{"milestones": 
+          [
+           {
+             "title": "Signup Setup",
+             "amount": 300,
+             "due_date": "Monday, 20th of January, 2020"
+           },
+           {
+             "title": "Xcode Integration",
+             "amount": 89,
+             "due_date": "Monday, 20th of January, 2020"
+           },
+           {
+             "title": "Database",
+             "amount": 400,
+             "due_date": "Monday, 20th of January, 2020"
+           }
+          ]
+        }' \
+    "https://api.kovatek.com/projects/1213/biddings/111/milestones" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available for talents to Create new milestones for a project bidding
+
+### HTTP Request
+
+`POST http://api.kovatek.com/project/<id>/biddings/<id>/milestones`
+
+## Update Project Miilestone
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "title": "Selenium WebTesting",
+         "amount": 1250,
+         "due_date": "Monday, 20th of January, 2020"
+        }' \
+    "https://api.kovatek.com/projects/1213/biddings/111/milestones/892" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to update project milestones
+
+### HTTP Request
+
+`PUT http://api.kovatek.com/projects/:id/biddings/:id/milestones/:id`
+
+<!-- <aside class="notice">
+<code>Milestones</code> array fails to update currently 
+</aside> -->
+
 ## Onboard Talents for a Project
 
 ```shell
 curl -X POST \
-    -H "Authorization: Bearer XXXXXXXXXXX" \
-    -d '{"kovatek_id": "KD3X2V4BM2",
-         "wages": 100.00
-        }' \
-    "https://api.kovatek.com/projects/1213/onboard" 
+    -H "Authorization: Bearer XXXXXXXXXXX" 
+    "https://api.kovatek.com/projects/1213/onboard?talent_id=<ID>" 
 ```
 > Response
 

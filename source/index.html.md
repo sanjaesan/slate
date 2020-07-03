@@ -1081,7 +1081,7 @@ This Endpoint is available to Create New project
 
 ### HTTP Request
 
-`POST http://api.kovatek.com/project`
+`POST http://api.kovatek.com/projects`
 
 <aside class="notice">
 Only <code>Client</code> user can create a <code>Project</code>
@@ -1169,7 +1169,7 @@ curl -X PUT \
 } 
 ```
 
-This Endpoint is available to retrieve specific project
+This Endpoint is available for clients to retrieve specific project
 
 ### HTTP Request
 
@@ -1251,7 +1251,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
 ]
 ```
 
-This Endpoint is available for retrieving client projects
+This Endpoint is available for clients to retrieve all projects
 
 ### HTTP Request
 
@@ -1349,9 +1349,6 @@ This Endpoint is available to Update project Biddings
 
 `PUT http://api.kovatek.com/projects/:id/biddings/:idd`
 
-<!-- <aside class="notice">
-<code>Milestones</code> array fails to update currently 
-</aside> -->
 
 ## Get Project Biddings
 ```shell

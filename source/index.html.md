@@ -1617,7 +1617,7 @@ This Endpoint is available for retrieving project tasks
 ### HTTP Request
 
 `GET http://api.kovatek.com/projects/:id/tasks`
-
+  
 
 # Test
 

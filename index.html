@@ -1433,7 +1433,7 @@ Super users can do that also anyways.</p>
 </span></code></pre></div>
 <p>This Endpoint gets a specified talent profile</p>
 <h3 id='http-request-22'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/talents/profiles</code></p>
+<p><code>GET http://api.kovatek.com/talents/profiles/search</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1485,7 +1485,7 @@ Super users can do that also anyways.</p>
          "work_rate": 15,
          "work_experience": 7
         }'</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/talents/profiles?offset=0&amp;limit=10"</span> 
+    <span class="s2">"https://api.kovatek.com/talents/profiles/search?offset=0&amp;limit=10"</span> 
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -1498,7 +1498,7 @@ Super users can do that also anyways.</p>
 </span></code></pre></div>
 <p>This Endpoint is available to browse talent profile with optional filters</p>
 <h3 id='http-request-24'>HTTP Request</h3>
-<p><code>POST http://api.kovatek.com/talents/profiles</code></p>
+<p><code>POST http://api.kovatek.com/talents/profiles/search</code></p>
 <h3 id='optional-filter-parameters'>Optional Filter Parameters</h3>
 <table><thead>
 <tr>
@@ -1623,6 +1623,12 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 <td>to specify if it&#39;s a new project</td>
 </tr>
 <tr>
+<td>Type</td>
+<td>integer</td>
+<td style="text-align: center">true</td>
+<td>to specify if remote, office or crowdsource</td>
+</tr>
+<tr>
 <td>complexity</td>
 <td>integer</td>
 <td style="text-align: center">true</td>
@@ -1632,7 +1638,7 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 <td>commitment</td>
 <td>integer</td>
 <td style="text-align: center">true</td>
-<td>project commitment period</td>
+<td>to specify if fixed or hourly</td>
 </tr>
 <tr>
 <td>start_budget</td>
@@ -1648,7 +1654,7 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </tr>
 </tbody></table>
 
-<p><strong>Project Duration</strong>        </p>
+<p><strong>Project Duration</strong></p>
 
 <table><thead>
 <tr>
@@ -1696,6 +1702,28 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </tr>
 </tbody></table>
 
+<p><strong>Project Type</strong>        </p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th style="text-align: center">Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Remote</td>
+<td style="text-align: center">1</td>
+</tr>
+<tr>
+<td>Office</td>
+<td style="text-align: center">2</td>
+</tr>
+<tr>
+<td>CrowdSource</td>
+<td style="text-align: center">3</td>
+</tr>
+</tbody></table>
+
 <p><strong>Project Commitment</strong>        </p>
 
 <table><thead>
@@ -1709,12 +1737,8 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 <td style="text-align: center">1</td>
 </tr>
 <tr>
-<td>Daily</td>
+<td>Fixed</td>
 <td style="text-align: center">2</td>
-</tr>
-<tr>
-<td>Weekly</td>
-<td style="text-align: center">3</td>
 </tr>
 </tbody></table>
 
@@ -1757,6 +1781,7 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
          "description": "A Fintech project that connect banks to logistic company",
          "talent_size": 5,
          "skills":["Reactjs, "Nodejs", "Grpc", "Protobuf"],
+         "type": 1,
          "duration":4,
          "commitment":2,
          "complexity":1,
@@ -1832,6 +1857,7 @@ All fields except <code>title</code> are updateable
   </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JB finance"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A project"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"ClientID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1342</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
   </span><span class="nl">"Complexity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1864,6 +1890,7 @@ All fields except <code>title</code> are updateable
     </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fintech"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A Fintech project that connects banks to logistics company"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ClientID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1342</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Complexity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1884,6 +1911,7 @@ All fields except <code>title</code> are updateable
     </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AR/VR Project"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A VR project ...."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ClientID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1342</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Complexity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1904,6 +1932,7 @@ All fields except <code>title</code> are updateable
     </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ehailing Platform"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A Distibuted &amp; Decentralised Ehailing System"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ClientID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1342</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Complexity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1955,6 +1984,7 @@ All fields except <code>title</code> are updateable
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{
          "duration": 2,
+         "type": 1,
          "commitment": 3,
          "status": 2
          "start_budget": 750 ,
@@ -1992,6 +2022,10 @@ All fields except <code>title</code> are updateable
 <tr>
 <td>Complexity</td>
 <td>Returns projects that matches value</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Returns projects that mathes value</td>
 </tr>
 <tr>
 <td>Status</td>

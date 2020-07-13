@@ -314,10 +314,19 @@
             <a href="#profiles" class="toc-h1 toc-link" data-title="Profiles">Profiles</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-profile" class="toc-h2 toc-link" data-title="Get Profile">Get Profile</a>
+                    <a href="#get-talents-profile" class="toc-h2 toc-link" data-title="Get Talents Profile">Get Talents Profile</a>
                   </li>
                   <li>
-                    <a href="#edit-profile" class="toc-h2 toc-link" data-title="Edit Profile">Edit Profile</a>
+                    <a href="#get-clients-profile" class="toc-h2 toc-link" data-title="Get Clients Profile">Get Clients Profile</a>
+                  </li>
+                  <li>
+                    <a href="#browse-talents" class="toc-h2 toc-link" data-title="Browse Talents">Browse Talents</a>
+                  </li>
+                  <li>
+                    <a href="#edit-talents-profile" class="toc-h2 toc-link" data-title="Edit Talents Profile">Edit Talents Profile</a>
+                  </li>
+                  <li>
+                    <a href="#edit-clients-profile" class="toc-h2 toc-link" data-title="Edit Clients Profile">Edit Clients Profile</a>
                   </li>
               </ul>
           </li>
@@ -341,6 +350,9 @@
                   </li>
                   <li>
                     <a href="#delete-project" class="toc-h2 toc-link" data-title="Delete Project">Delete Project</a>
+                  </li>
+                  <li>
+                    <a href="#browse-projects" class="toc-h2 toc-link" data-title="Browse Projects">Browse Projects</a>
                   </li>
                   <li>
                     <a href="#new-project-bidding" class="toc-h2 toc-link" data-title="New Project Bidding">New Project Bidding</a>
@@ -1172,7 +1184,7 @@ Super users can do that also anyways.</p>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the user to retrieve it&#39;s setting</td>
+<td>The ID of the user to retrieve its setting</td>
 </tr>
 </tbody></table>
 <h2 id='get-all-settings'>Get all settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/settings/?offset=32442"</span> <span class="se">\</span>
@@ -1366,7 +1378,7 @@ Super users can do that also anyways.</p>
 <h1 id='profiles'>Profiles</h1>
 <p>The Profile Objects holds profile data.</p>
 
-<p><strong>Seniority Level</strong></p>
+<p><strong>Talents Seniority Level</strong></p>
 
 <table><thead>
 <tr>
@@ -1387,20 +1399,20 @@ Super users can do that also anyways.</p>
 <td>3</td>
 </tr>
 </tbody></table>
-<h2 id='get-profile'>Get Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/profiles/2132"</span> <span class="se">\</span>
+<h2 id='get-talents-profile'>Get Talents Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/talents/profiles"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">2132</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T09:39:23.548454+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T09:39:23.548454+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"UserID"</span><span class="p">:</span><span class="w"> </span><span class="mi">2132</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Developer"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"AboutMe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am backend developer with more than 7 years experience on web development. My excellent knowledge includes:"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"AboutMe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am a backend developer with more than 7 years experience on web development. My excellent knowledge includes:"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"MoreDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am problem solving, eager to learn new things if needed, Does Something works for you? Let's get in touch."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"SeniorityLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ProjectsCompleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -1413,12 +1425,15 @@ Super users can do that also anyways.</p>
     </span><span class="nl">"WorkExperience"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
     </span><span class="nl">"Interviews"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CurrentlyHired"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ScheduleInterview"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"ScheduleInterview"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"City"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Country"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Skills"</span><span class="p">:[</span><span class="s2">"Golang"</span><span class="p">,</span><span class="s2">"Ruby"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint gets a specified talent profile</p>
 <h3 id='http-request-22'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/profile/&lt;ID&gt;</code></p>
+<p><code>GET http://api.kovatek.com/talents/profiles</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1431,7 +1446,96 @@ Super users can do that also anyways.</p>
 <td>The ID of the talent to retrieve profile</td>
 </tr>
 </tbody></table>
-<h2 id='edit-profile'>Edit Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+<h2 id='get-clients-profile'>Get Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/clients/profiles"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">532</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T09:39:23.548454+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T09:39:23.548454+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ClientID"</span><span class="p">:</span><span class="w"> </span><span class="mi">532</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ProjectsPosted"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"AmountSpent"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint gets a specified talent profile</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/clients/profile</code></p>
+<h3 id='url-parameters-11'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the client to retrieve profile</td>
+</tr>
+</tbody></table>
+<h2 id='browse-talents'>Browse Talents</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+         "Title": "Web Developer",
+         "seniority_level": 2,
+         "work_rate": 15,
+         "work_experience": 7
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/talents/profiles?offset=0&amp;limit=10"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to browse talent profile with optional filters</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>POST http://api.kovatek.com/talents/profiles</code></p>
+<h3 id='optional-filter-parameters'>Optional Filter Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Title</td>
+<td>Returns profiles that matches value</td>
+</tr>
+<tr>
+<td>City</td>
+<td>Returns profiles that matches value</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>Returns profiles that matches value</td>
+</tr>
+<tr>
+<td>SeniorityLevel</td>
+<td>Returns profiles that are &gt;= value provided</td>
+</tr>
+<tr>
+<td>WorkExperience</td>
+<td>Returns profiles that are &gt;= value provided</td>
+</tr>
+<tr>
+<td>WorkRate</td>
+<td>Returns profiles that are &lt;= value provided</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Passing <code>Zero Values</code> for all parameters will return all talents unfiltered
+</aside>
+<h2 id='edit-talents-profile'>Edit Talents Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{
          "Title": "Web Developer",
@@ -1440,7 +1544,7 @@ Super users can do that also anyways.</p>
          "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
          "work_experience": 7
         }'</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/profiles/2132"</span> 
+    <span class="s2">"https://api.kovatek.com/talents/profiles"</span> 
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -1450,8 +1554,25 @@ Super users can do that also anyways.</p>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update talent profile</p>
-<h3 id='http-request-23'>HTTP Request</h3>
-<p><code>PUT http://api.kovatek.com/profiles/:id</code></p>
+<h3 id='http-request-25'>HTTP Request</h3>
+<p><code>PUT http://api.kovatek.com/clients/profiles/:id</code></p>
+<h2 id='edit-clients-profile'>Edit Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/clients/profiles"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to Update client profile</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>PUT http://api.kovatek.com/clients/profiles</code></p>
 <h1 id='projects'>Projects</h1>
 <table><thead>
 <tr>
@@ -1490,6 +1611,12 @@ Super users can do that also anyways.</p>
 <td>integer</td>
 <td style="text-align: center">true</td>
 <td>expressed in days</td>
+</tr>
+<tr>
+<td>ongoing</td>
+<td>bool</td>
+<td style="text-align: center">false</td>
+<td>to specify if it&#39;s a new project</td>
 </tr>
 <tr>
 <td>complexity</td>
@@ -1642,7 +1769,7 @@ Super users can do that also anyways.</p>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Create New project</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/projects</code></p>
 
 <aside class="notice">
@@ -1666,7 +1793,7 @@ Only <code>Client</code> user can create a <code>Project</code>
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update created projects</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id</code></p>
 
 <aside class="notice">
@@ -1684,7 +1811,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update projects status</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/status/:id</code></p>
 <h2 id='get-project'>Get Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -1716,7 +1843,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available for clients to retrieve specific project</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id</code></p>
 <h2 id='get-projects'>Get Projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects?offset=2&amp;limit=50"</span> 
@@ -1792,7 +1919,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for clients to retrieve all projects</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects</code></p>
 <h2 id='delete-project'>Delete Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/projects/1382"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
@@ -1806,9 +1933,9 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available to remove a Project by an admin or super user </p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>DELETE https://api.kovatek.com/projects/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1820,6 +1947,61 @@ All fields except <code>title</code> are updateable
 <td>The ID of the project to delete</td>
 </tr>
 </tbody></table>
+<h2 id='browse-projects'>Browse Projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+         "duration": 2,
+         "commitment": 3,
+         "status": 2
+         "start_budget": 750 ,
+         "complexity": 1
+        }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/projects/search?offset=0&amp;limit=10"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to browse projects with optional filters</p>
+<h3 id='http-request-33'>HTTP Request</h3>
+<p><code>POST http://api.kovatek.com/projects/search</code></p>
+<h3 id='optional-filter-parameters-2'>Optional Filter Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Duration</td>
+<td>Returns projects that matches value</td>
+</tr>
+<tr>
+<td>Commitment</td>
+<td>Returns projects that matches value</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Returns projects that matches value</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>value defaulted to projects in created and hiring status</td>
+</tr>
+<tr>
+<td>StartBudget</td>
+<td>Returns projects that are &gt;= value provided</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Passing <code>Zero Values</code> for all parameters will return all projects unfiltered
+</aside>
 <h2 id='new-project-bidding'>New Project Bidding</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{"cover_letter": "My cover letter, bidding for project JB finance",
@@ -1852,7 +2034,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available for talents to Create a new bidding for a project</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/project/&lt;id&gt;/biddings</code></p>
 <h2 id='update-project-bidding'>Update Project Bidding</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -1870,7 +2052,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update project Biddings</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/biddings/:idd</code></p>
 <h2 id='get-project-biddings'>Get Project Biddings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/biddings"</span> 
@@ -1929,7 +2111,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for clients to retrieve all biddings available for a specified project</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id/biddings</code></p>
 <h2 id='new-project-milestone'>New Project Milestone</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -1962,7 +2144,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available for talents to Create new milestones for a project bidding</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-37'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/project/&lt;id&gt;/biddings/&lt;id&gt;/milestones</code></p>
 <h2 id='update-project-miilestone'>Update Project Miilestone</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -1981,7 +2163,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to update project milestones</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-38'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/biddings/:id/milestones/:id</code></p>
 
 <!-- <aside class="notice">
@@ -1999,7 +2181,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to onboard talents for a project</p>
-<h3 id='http-request-35'>HTTP Request</h3>
+<h3 id='http-request-39'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/projects/&lt;id&gt;/onboard</code></p>
 <h2 id='new-project-task'>New Project Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2017,7 +2199,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Create a new task for project</p>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-40'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/project/&lt;id&gt;/tasks</code></p>
 <h2 id='update-project-task'>Update Project Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2035,7 +2217,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update project Tasks</p>
-<h3 id='http-request-37'>HTTP Request</h3>
+<h3 id='http-request-41'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/tasks/:id</code></p>
 <h2 id='get-project-tasks'>Get Project Tasks</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/tasks?offset=2&amp;limit=50"</span> 
@@ -2088,7 +2270,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for retrieving project tasks</p>
-<h3 id='http-request-38'>HTTP Request</h3>
+<h3 id='http-request-42'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id/tasks</code></p>
 <h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='update-interview'>Update Interview</h2><h2 id='get-interview'>Get interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">

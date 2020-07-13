@@ -717,7 +717,7 @@ This Endpoint gets a specified user settings and it's available for all user typ
 
 Parameter | Description
 --------- | ------- 
-ID | The ID of the user to retrieve it's setting
+ID | The ID of the user to retrieve its setting
 
 ## Get all settings
 
@@ -922,7 +922,7 @@ ID | The ID of the user to update it's notification setting
 # Profiles
 The Profile Objects holds profile data.
 
-**Seniority Level**
+**Talents Seniority Level**
 
 Level |  Value 
 --------- | ------- 
@@ -931,23 +931,23 @@ Intermediate | 2
 Senior | 3 
 
 
-## Get Profile
+## Get Talents Profile
 
 ```shell
-curl "https://api.kovatek.com/profiles/2132" \
+curl "https://api.kovatek.com/talents/profiles" \
   -H "Authorization: Bearer XXXXXXXXXXX"
 ```
 > Response
 
 ```json
   {
-    "ID": 1,
+    "ID": 2132,
     "CreatedAt": "2020-05-31T09:39:23.548454+01:00",
     "UpdatedAt": "2020-05-31T09:39:23.548454+01:00",
     "DeletedAt": null,
     "UserID": 2132,
     "Title": "Web Developer",
-    "AboutMe": "I am backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
+    "AboutMe": "I am a backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
     "MoreDetails": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let's get in touch.",
     "SeniorityLevel": 2,
     "ProjectsCompleted": 4,
@@ -960,13 +960,16 @@ curl "https://api.kovatek.com/profiles/2132" \
     "WorkExperience": 7,
     "Interviews": 0,
     "CurrentlyHired": false,
-    "ScheduleInterview": null
+    "ScheduleInterview": null,
+    "City":"",
+    "Country":"",
+    "Skills":["Golang","Ruby"]
   } 
 ```
 This Endpoint gets a specified talent profile
 ### HTTP Request
 
-`GET http://api.kovatek.com/profile/<ID>`
+`GET http://api.kovatek.com/talents/profiles`
 
 ### URL Parameters
 
@@ -974,7 +977,81 @@ Parameter | Description
 --------- | ------- 
 ID | The ID of the talent to retrieve profile
 
-## Edit Profile
+## Get Clients Profile
+
+```shell
+curl "https://api.kovatek.com/clients/profiles" \
+  -H "Authorization: Bearer XXXXXXXXXXX"
+```
+> Response
+
+```json
+  {
+    "ID": 532,
+    "CreatedAt": "2020-05-31T09:39:23.548454+01:00",
+    "UpdatedAt": "2020-05-31T09:39:23.548454+01:00",
+    "DeletedAt": null,
+    "ClientID": 532,
+    "ProjectsPosted": 5,
+    "AmountSpent": 10000
+  } 
+```
+This Endpoint gets a specified talent profile
+### HTTP Request
+
+`GET http://api.kovatek.com/clients/profile`
+
+### URL Parameters
+
+Parameter | Description
+--------- | ------- 
+ID | The ID of the client to retrieve profile
+
+## Browse Talents
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "Title": "Web Developer",
+         "seniority_level": 2,
+         "work_rate": 15,
+         "work_experience": 7
+        }' \
+    "https://api.kovatek.com/talents/profiles?offset=0&limit=10" 
+```
+> Response
+
+```json
+{
+  [
+
+  ]
+} 
+```
+
+This Endpoint is available to browse talent profile with optional filters
+
+### HTTP Request
+
+`POST http://api.kovatek.com/talents/profiles`
+
+### Optional Filter Parameters
+
+Parameter | Description
+--------- | ------- 
+Title| Returns profiles that matches value
+City | Returns profiles that matches value
+Country| Returns profiles that matches value
+SeniorityLevel | Returns profiles that are >= value provided
+WorkExperience | Returns profiles that are >= value provided
+WorkRate | Returns profiles that are <= value provided
+
+
+<aside class="notice">
+Passing <code>Zero Values</code> for all parameters will return all talents unfiltered
+</aside>
+
+## Edit Talents Profile
 ```shell
 curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
@@ -985,7 +1062,7 @@ curl -X PUT \
          "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
          "work_experience": 7
         }' \
-    "https://api.kovatek.com/profiles/2132" 
+    "https://api.kovatek.com/talents/profiles" 
 ```
 > Response
 
@@ -999,7 +1076,30 @@ This Endpoint is available to Update talent profile
 
 ### HTTP Request
 
-`PUT http://api.kovatek.com/profiles/:id`
+`PUT http://api.kovatek.com/clients/profiles/:id`
+
+## Edit Clients Profile
+```shell
+curl -X PUT \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         
+        }' \
+    "https://api.kovatek.com/clients/profiles" 
+```
+> Response
+
+```json
+{
+  "200": "success"
+} 
+```
+
+This Endpoint is available to Update client profile
+
+### HTTP Request
+
+`PUT http://api.kovatek.com/clients/profiles`
 
 # Projects
 
@@ -1011,6 +1111,7 @@ description | string | true | detailed project description.
 talent_size | integer | false | max number of developers to onboard.
 skills | Array | true | technical requirements.
 duration | integer | true|  expressed in days
+ongoing | bool | false | to specify if it's a new project
 complexity | integer| true | complexity of the project
 commitment | integer| true | project commitment period
 start_budget | float | true | minimum budgeted for the project
@@ -1283,6 +1384,49 @@ This Endpoint is available to remove a Project by an admin or super user
 Parameter | Description
 --------- | -----------
 ID | The ID of the project to delete
+
+## Browse Projects
+```shell
+curl -X POST \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    -d '{
+         "duration": 2,
+         "commitment": 3,
+         "status": 2
+         "start_budget": 750 ,
+         "complexity": 1
+        }' \
+    "https://api.kovatek.com/projects/search?offset=0&limit=10" 
+```
+> Response
+
+```json
+{
+  [
+
+  ]
+} 
+```
+
+This Endpoint is available to browse projects with optional filters
+
+### HTTP Request
+
+`POST http://api.kovatek.com/projects/search`
+
+### Optional Filter Parameters
+
+Parameter | Description
+--------- | ------- 
+Duration| Returns projects that matches value
+Commitment | Returns projects that matches value
+Complexity | Returns projects that matches value
+Status | value defaulted to projects in created and hiring status
+StartBudget | Returns projects that are >= value provided
+
+<aside class="notice">
+Passing <code>Zero Values</code> for all parameters will return all projects unfiltered
+</aside>
 
 
 ## New Project Bidding 

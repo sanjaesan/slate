@@ -969,7 +969,7 @@ curl "https://api.kovatek.com/talents/profiles" \
 This Endpoint gets a specified talent profile
 ### HTTP Request
 
-`GET http://api.kovatek.com/talents/profiles`
+`GET http://api.kovatek.com/talents/profiles/search`
 
 ### URL Parameters
 
@@ -1017,7 +1017,7 @@ curl -X POST \
          "work_rate": 15,
          "work_experience": 7
         }' \
-    "https://api.kovatek.com/talents/profiles?offset=0&limit=10" 
+    "https://api.kovatek.com/talents/profiles/search?offset=0&limit=10" 
 ```
 > Response
 
@@ -1033,7 +1033,7 @@ This Endpoint is available to browse talent profile with optional filters
 
 ### HTTP Request
 
-`POST http://api.kovatek.com/talents/profiles`
+`POST http://api.kovatek.com/talents/profiles/search`
 
 ### Optional Filter Parameters
 
@@ -1105,7 +1105,6 @@ This Endpoint is available to Update client profile
 
 # Projects
 
-
 Fields | Type | Required | Description 
 --------- | ---- | :------:| -----------
 title | string | true | A short project title.
@@ -1114,18 +1113,19 @@ talent_size | integer | false | max number of developers to onboard.
 skills | Array | true | technical requirements.
 duration | integer | true|  expressed in days
 ongoing | bool | false | to specify if it's a new project
+Type | integer | true | to specify if remote, office or crowdsource
 complexity | integer| true | complexity of the project
-commitment | integer| true | project commitment period
+commitment | integer| true | to specify if fixed or hourly
 start_budget | float | true | minimum budgeted for the project
 end_budget | float | true | maximum budgeted for the project
 
-**Project Duration**        
+**Project Duration**
 
-Duration |  Value    
---------- | :-------:    
-OneMonth | 1               
+Duration |  Value
+--------- | :-------:
+OneMonth | 1
 ThreeMonths | 2
-SixMonths | 3 
+SixMonths | 3
 Undefined | 4
 
 
@@ -1137,13 +1137,21 @@ Easy | 1
 Medium | 2
 Difficult | 3 
 
+**Project Type**        
+
+Type |  Value    
+--------- | :-----:    
+Remote | 1               
+Office | 2
+CrowdSource | 3 
+
 **Project Commitment**        
 
 Commitment |  Value    
 --------- | :---:    
 Hourly | 1               
-Daily | 2
-Weekly | 3 
+Fixed | 2
+
 
 **Project Status**   
 
@@ -1164,6 +1172,7 @@ curl -X POST \
          "description": "A Fintech project that connect banks to logistic company",
          "talent_size": 5,
          "skills":["Reactjs, "Nodejs", "Grpc", "Protobuf"],
+         "type": 1,
          "duration":4,
          "commitment":2,
          "complexity":1,
@@ -1257,6 +1266,7 @@ curl -X PUT \
   "Title": "JB finance",
   "Description": "A project",
   "ClientID": 1342,
+  "type": 1,
   "Duration": 95,
   "Complexity": 0,
   "Status": 0,
@@ -1295,6 +1305,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
     "Title": "Fintech",
     "Description": "A Fintech project that connects banks to logistics company",
     "ClientID": 1342,
+    "type": 1,
     "Duration": 95,
     "Complexity": 0,
     "Status": 0,
@@ -1315,6 +1326,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
     "Title": "AR/VR Project",
     "Description": "A VR project ....",
     "ClientID": 1342,
+    "type": 1,
     "Duration": 95,
     "Complexity": 0,
     "Status": 0,
@@ -1335,6 +1347,7 @@ curl -H "Authorization: Bearer XXXXXXXXXXX" \
     "Title": "Ehailing Platform",
     "Description": "A Distibuted & Decentralised Ehailing System",
     "ClientID": 1342,
+    "type": 1,
     "Duration": 100,
     "Complexity": 0,
     "Status": 0,
@@ -1393,6 +1406,7 @@ curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" \
     -d '{
          "duration": 2,
+         "type": 1,
          "commitment": 3,
          "status": 2
          "start_budget": 750 ,
@@ -1423,6 +1437,7 @@ Parameter | Description
 Duration| Returns projects that matches value
 Commitment | Returns projects that matches value
 Complexity | Returns projects that matches value
+Type | Returns projects that mathes value
 Status | value defaulted to projects in created and hiring status
 StartBudget | Returns projects that are >= value provided
 Skills | Returns projects that matches members of the slice provided

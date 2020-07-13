@@ -1045,6 +1045,8 @@ Country| Returns profiles that matches value
 SeniorityLevel | Returns profiles that are >= value provided
 WorkExperience | Returns profiles that are >= value provided
 WorkRate | Returns profiles that are <= value provided
+Skills | Returns profiles that matches members of the slice provided
+
 
 
 <aside class="notice">
@@ -1423,6 +1425,7 @@ Commitment | Returns projects that matches value
 Complexity | Returns projects that matches value
 Status | value defaulted to projects in created and hiring status
 StartBudget | Returns projects that are >= value provided
+Skills | Returns projects that matches members of the slice provided
 
 <aside class="notice">
 Passing <code>Zero Values</code> for all parameters will return all projects unfiltered

@@ -1288,6 +1288,47 @@ This Endpoint is available for clients to retrieve specific project
 
 `GET http://api.kovatek.com/projects/:id`
 
+
+## View Projects
+```shell
+curl -X GET \
+    -H "Authorization: Bearer XXXXXXXXXXX" \
+    "https://api.kovatek.com/projects/view?limit=1&offset=0" 
+```
+> Response
+
+```json
+{  
+  "ID": 1213,
+  "CreatedAt": "2020-05-26T05:18:32.142905+01:00",
+  "UpdatedAt": "2020-05-26T05:28:49.409624+01:00",
+  "DeletedAt": null,
+  "Title": "JB finance",
+  "Description": "A project",
+  "ClientID": 1342,
+  "type": 1,
+  "Duration": 95,
+  "Complexity": 0,
+  "Status": 0,
+  "TalentSize": 5,
+  "StartBudget": 500,
+  "EndBudget":750
+  "Skills":[
+    "Sveltejs",
+    "Haskell",
+    "Grpc",
+    "Protobuf"
+    ]
+} 
+```
+
+This Endpoint is available for talents to see all projects available
+
+### HTTP Request
+
+`GET http://api.kovatek.com/projects/view`
+
+
 ## Get Projects
 ```shell
 curl -H "Authorization: Bearer XXXXXXXXXXX" \

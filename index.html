@@ -346,6 +346,9 @@
                     <a href="#get-project" class="toc-h2 toc-link" data-title="Get Project">Get Project</a>
                   </li>
                   <li>
+                    <a href="#view-projects" class="toc-h2 toc-link" data-title="View Projects">View Projects</a>
+                  </li>
+                  <li>
                     <a href="#get-projects" class="toc-h2 toc-link" data-title="Get Projects">Get Projects</a>
                   </li>
                   <li>
@@ -1875,6 +1878,39 @@ All fields except <code>title</code> are updateable
 <p>This Endpoint is available for clients to retrieve specific project</p>
 <h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id</code></p>
+<h2 id='view-projects'>View Projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/projects/view?limit=1&amp;offset=0"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1213</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"CreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-26T05:18:32.142905+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"UpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-26T05:28:49.409624+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"DeletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JB finance"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A project"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ClientID"</span><span class="p">:</span><span class="w"> </span><span class="mi">1342</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Complexity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"TalentSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"StartBudget"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"EndBudget"</span><span class="p">:</span><span class="mi">750</span><span class="w">
+  </span><span class="nl">"Skills"</span><span class="p">:[</span><span class="w">
+    </span><span class="s2">"Sveltejs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Haskell"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Grpc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Protobuf"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available for talents to see all projects available</p>
+<h3 id='http-request-31'>HTTP Request</h3>
+<p><code>GET http://api.kovatek.com/projects/view</code></p>
 <h2 id='get-projects'>Get Projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects?offset=2&amp;limit=50"</span> 
 </code></pre></div>
@@ -1952,7 +1988,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for clients to retrieve all projects</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects</code></p>
 <h2 id='delete-project'>Delete Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/projects/1382"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
@@ -1966,7 +2002,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available to remove a Project by an admin or super user </p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>DELETE https://api.kovatek.com/projects/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
@@ -2002,7 +2038,7 @@ All fields except <code>title</code> are updateable
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to browse projects with optional filters</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/projects/search</code></p>
 <h3 id='optional-filter-parameters-2'>Optional Filter Parameters</h3>
 <table><thead>
@@ -2076,7 +2112,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available for talents to Create a new bidding for a project</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/project/&lt;id&gt;/biddings</code></p>
 <h2 id='update-project-bidding'>Update Project Bidding</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2094,7 +2130,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update project Biddings</p>
-<h3 id='http-request-35'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/biddings/:idd</code></p>
 <h2 id='get-project-biddings'>Get Project Biddings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/biddings"</span> 
@@ -2153,7 +2189,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for clients to retrieve all biddings available for a specified project</p>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id/biddings</code></p>
 <h2 id='new-project-milestone'>New Project Milestone</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2186,7 +2222,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available for talents to Create new milestones for a project bidding</p>
-<h3 id='http-request-37'>HTTP Request</h3>
+<h3 id='http-request-38'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/project/&lt;id&gt;/biddings/&lt;id&gt;/milestones</code></p>
 <h2 id='update-project-miilestone'>Update Project Miilestone</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2205,7 +2241,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to update project milestones</p>
-<h3 id='http-request-38'>HTTP Request</h3>
+<h3 id='http-request-39'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/biddings/:id/milestones/:id</code></p>
 
 <!-- <aside class="notice">
@@ -2223,7 +2259,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to onboard talents for a project</p>
-<h3 id='http-request-39'>HTTP Request</h3>
+<h3 id='http-request-40'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/projects/&lt;id&gt;/onboard</code></p>
 <h2 id='new-project-task'>New Project Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2241,7 +2277,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Create a new task for project</p>
-<h3 id='http-request-40'>HTTP Request</h3>
+<h3 id='http-request-41'>HTTP Request</h3>
 <p><code>POST http://api.kovatek.com/project/&lt;id&gt;/tasks</code></p>
 <h2 id='update-project-task'>Update Project Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2259,7 +2295,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre></div>
 <p>This Endpoint is available to Update project Tasks</p>
-<h3 id='http-request-41'>HTTP Request</h3>
+<h3 id='http-request-42'>HTTP Request</h3>
 <p><code>PUT http://api.kovatek.com/projects/:id/tasks/:id</code></p>
 <h2 id='get-project-tasks'>Get Project Tasks</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/tasks?offset=2&amp;limit=50"</span> 
@@ -2312,7 +2348,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This Endpoint is available for retrieving project tasks</p>
-<h3 id='http-request-42'>HTTP Request</h3>
+<h3 id='http-request-43'>HTTP Request</h3>
 <p><code>GET http://api.kovatek.com/projects/:id/tasks</code></p>
 <h1 id='test'>Test</h1><h2 id='take-a-test'>Take a Test</h2><h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='update-interview'>Update Interview</h2><h2 id='get-interview'>Get interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">

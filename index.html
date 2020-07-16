@@ -2083,22 +2083,22 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 <h2 id='new-project-bidding'>New Project Bidding</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{"cover_letter": "My cover letter, bidding for project JB finance",
-         "delivery_time": 60,
+         "delivery_days": 60,
          "milestones": [
            {
              "title": "Login Setup",
              "amount": 300,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "API Integration",
              "amount": 89,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "Front End",
              "amount": 400,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            }
          ]
         }'</span> <span class="se">\</span>
@@ -2118,7 +2118,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{
          "cover_letter": "My cover letter, bidding for project JB finance",
-         "delivery_time": 60
+         "delivery_days": 60
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/biddings/111"</span> 
 </code></pre></div>
@@ -2198,17 +2198,17 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
            {
              "title": "Signup Setup",
              "amount": 300,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "Xcode Integration",
              "amount": 89,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "Database",
              "amount": 400,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            }
           ]
         }'</span> <span class="se">\</span>
@@ -2229,7 +2229,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
     <span class="nt">-d</span> <span class="s1">'{
          "title": "Selenium WebTesting",
          "amount": 1250,
-         "due_date": "Monday, 20th of January, 2020"
+         "due": "Monday, 20th of January, 2020"
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects/1213/biddings/111/milestones/892"</span> 
 </code></pre></div>

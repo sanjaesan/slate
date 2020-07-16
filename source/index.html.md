@@ -1493,22 +1493,22 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" \
     -d '{"cover_letter": "My cover letter, bidding for project JB finance",
-         "delivery_time": 60,
+         "delivery_days": 60,
          "milestones": [
            {
              "title": "Login Setup",
              "amount": 300,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "API Integration",
              "amount": 89,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "Front End",
              "amount": 400,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            }
          ]
         }' \
@@ -1534,7 +1534,7 @@ curl -X PUT \
     -H "Authorization: Bearer XXXXXXXXXXX" \
     -d '{
          "cover_letter": "My cover letter, bidding for project JB finance",
-         "delivery_time": 60
+         "delivery_days": 60
         }' \
     "https://api.kovatek.com/projects/1213/biddings/111" 
 ```
@@ -1627,17 +1627,17 @@ curl -X POST \
            {
              "title": "Signup Setup",
              "amount": 300,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "Xcode Integration",
              "amount": 89,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            },
            {
              "title": "Database",
              "amount": 400,
-             "due_date": "Monday, 20th of January, 2020"
+             "due": "Monday, 20th of January, 2020"
            }
           ]
         }' \
@@ -1664,7 +1664,7 @@ curl -X PUT \
     -d '{
          "title": "Selenium WebTesting",
          "amount": 1250,
-         "due_date": "Monday, 20th of January, 2020"
+         "due": "Monday, 20th of January, 2020"
         }' \
     "https://api.kovatek.com/projects/1213/biddings/111/milestones/892" 
 ```

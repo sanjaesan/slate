@@ -969,7 +969,7 @@ curl "https://api.kovatek.com/talents/profiles" \
 This Endpoint gets a specified talent profile
 ### HTTP Request
 
-`GET http://api.kovatek.com/talents/profiles/search`
+`GET http://api.kovatek.com/talents/profiles`
 
 ### URL Parameters
 
@@ -1691,7 +1691,7 @@ This Endpoint is available to update project milestones
 ```shell
 curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" 
-    "https://api.kovatek.com/projects/1213/onboard?talent_id=<ID>" 
+    "https://api.kovatek.com/projects/1213/onboard?talent_id=<ID>"
 ```
 > Response
 

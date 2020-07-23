@@ -1562,7 +1562,7 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </span></code></pre></div>
 <p>This Endpoint is available to Update talent profile</p>
 <h3 id='http-request-25'>HTTP Request</h3>
-<p><code>PUT http://api.kovatek.com/clients/profiles/:id</code></p>
+<p><code>PUT http://api.kovatek.com/clients/profiles</code></p>
 <h2 id='edit-clients-profile'>Edit Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{
@@ -2249,7 +2249,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 </aside> -->
 <h2 id='onboard-talents-for-a-project'>Onboard Talents for a Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> 
-    <span class="s2">"https://api.kovatek.com/projects/1213/onboard?talent_id=&lt;ID&gt;"</span>
+    <span class="s2">"https://api.kovatek.com/projects/1213/onboard?talent_id=&lt;ID&gt;&amp;wages=&lt;AMOUNT&gt;"</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>

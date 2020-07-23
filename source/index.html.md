@@ -1078,7 +1078,7 @@ This Endpoint is available to Update talent profile
 
 ### HTTP Request
 
-`PUT http://api.kovatek.com/clients/profiles/:id`
+`PUT http://api.kovatek.com/clients/profiles`
 
 ## Edit Clients Profile
 ```shell
@@ -1691,7 +1691,7 @@ This Endpoint is available to update project milestones
 ```shell
 curl -X POST \
     -H "Authorization: Bearer XXXXXXXXXXX" 
-    "https://api.kovatek.com/projects/1213/onboard?talent_id=<ID>"
+    "https://api.kovatek.com/projects/1213/onboard?talent_id=<ID>&wages=<AMOUNT>"
 ```
 > Response
 

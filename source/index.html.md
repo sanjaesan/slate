@@ -922,7 +922,7 @@ ID | The ID of the user to update it's notification setting
 # Profiles
 The Profile Objects holds profile data.
 
-**Talents Seniority Level**
+**Talents Seniority level/Work Rate**
 
 Level |  Value 
 --------- | ------- 
@@ -1061,10 +1061,22 @@ curl -X PUT \
          "Title": "Web Developer",
          "about_me": "I am a backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
          "seniority_level": 2,
+         "work_rate": 2,
          "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
-         "work_experience": 7
+         "work_experience": 7,
+         "project_leader": false,
+         "projects_led": [],
+         "projects_led_count": 0,
+         "github_link": "github.com/myusername",
+         "speciality": "Backend Development",
+         "other_speciality": ["Frontend","Data Science"],
+         "core_techstack": "Nodejs",
+         "core_techstack_experience": 4,
+         "other_core_techstacks": ["python","Haskel"],
+         "city":"Lagos",
+         "Country":"Nigeria"
         }' \
-    "https://api.kovatek.com/talents/profiles" 
+    "https://api.kovatek.com/talents/profiles/123" 
 ```
 > Response
 
@@ -1078,7 +1090,7 @@ This Endpoint is available to Update talent profile
 
 ### HTTP Request
 
-`PUT http://api.kovatek.com/clients/profiles`
+`PUT http://api.kovatek.com/clients/profiles/{id}`
 
 ## Edit Clients Profile
 ```shell

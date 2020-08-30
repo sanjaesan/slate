@@ -1381,7 +1381,7 @@ Super users can do that also anyways.</p>
 <h1 id='profiles'>Profiles</h1>
 <p>The Profile Objects holds profile data.</p>
 
-<p><strong>Talents Seniority Level</strong></p>
+<p><strong>Talents Seniority level/Work Rate</strong></p>
 
 <table><thead>
 <tr>
@@ -1548,10 +1548,22 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
          "Title": "Web Developer",
          "about_me": "I am a backend developer with more than 7 years experience on web development. My excellent knowledge includes:",
          "seniority_level": 2,
+         "work_rate": 2,
          "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
-         "work_experience": 7
+         "work_experience": 7,
+         "project_leader": false,
+         "projects_led": [],
+         "projects_led_count": 0,
+         "github_link": "github.com/myusername",
+         "speciality": "Backend Development",
+         "other_speciality": ["Frontend","Data Science"],
+         "core_techstack": "Nodejs",
+         "core_techstack_experience": 4,
+         "other_core_techstacks": ["python","Haskel"],
+         "city":"Lagos",
+         "Country":"Nigeria"
         }'</span> <span class="se">\</span>
-    <span class="s2">"https://api.kovatek.com/talents/profiles"</span> 
+    <span class="s2">"https://api.kovatek.com/talents/profiles/123"</span> 
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -1562,7 +1574,7 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </span></code></pre></div>
 <p>This Endpoint is available to Update talent profile</p>
 <h3 id='http-request-25'>HTTP Request</h3>
-<p><code>PUT http://api.kovatek.com/clients/profiles</code></p>
+<p><code>PUT http://api.kovatek.com/clients/profiles/{id}</code></p>
 <h2 id='edit-clients-profile'>Edit Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{

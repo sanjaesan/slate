@@ -1064,6 +1064,7 @@ curl -X PUT \
          "work_rate": 2,
          "more_details": "I am problem solving, eager to learn new things if needed, Does Something works for you? Let us get in touch.",
          "work_experience": 7,
+         "english_proficiency": 50,
          "project_leader": false,
          "projects_led": [],
          "projects_led_count": 0,

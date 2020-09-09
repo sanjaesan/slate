@@ -1071,6 +1071,8 @@ curl -X PUT \
          "speciality": "Backend Development",
          "other_speciality": ["Frontend","Data Science"],
          "core_techstack": "Nodejs",
+         "core_techstack_project_count": 2,
+         "core_techstack_projects": ["https://myproject1.com","https://myproject2.com"],
          "core_techstack_experience": 4,
          "other_core_techstacks": ["python","Haskel"],
          "city":"Lagos",

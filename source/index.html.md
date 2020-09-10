@@ -934,7 +934,7 @@ Senior | 3
 ## Get Talents Profile
 
 ```shell
-curl "https://api.kovatek.com/talents/profiles" \
+curl "https://api.kovatek.com/talents/profiles/2132" \
   -H "Authorization: Bearer XXXXXXXXXXX"
 ```
 > Response
@@ -969,7 +969,7 @@ curl "https://api.kovatek.com/talents/profiles" \
 This Endpoint gets a specified talent profile
 ### HTTP Request
 
-`GET http://api.kovatek.com/talents/profiles`
+`GET http://api.kovatek.com/talents/profiles/{id}`
 
 ### URL Parameters
 
@@ -980,7 +980,7 @@ ID | The ID of the talent to retrieve profile
 ## Get Clients Profile
 
 ```shell
-curl "https://api.kovatek.com/clients/profiles" \
+curl "https://api.kovatek.com/clients/profiles/532" \
   -H "Authorization: Bearer XXXXXXXXXXX"
 ```
 > Response
@@ -999,7 +999,7 @@ curl "https://api.kovatek.com/clients/profiles" \
 This Endpoint gets a specified talent profile
 ### HTTP Request
 
-`GET http://api.kovatek.com/clients/profile`
+`GET http://api.kovatek.com/clients/profiles/{id}`
 
 ### URL Parameters
 
@@ -1093,7 +1093,7 @@ This Endpoint is available to Update talent profile
 
 ### HTTP Request
 
-`PUT http://api.kovatek.com/clients/profiles/{id}`
+`PUT http://api.kovatek.com/talents/profiles`
 
 ## Edit Clients Profile
 ```shell

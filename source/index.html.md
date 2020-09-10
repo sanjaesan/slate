@@ -1079,7 +1079,7 @@ curl -X PUT \
          "city":"Lagos",
          "Country":"Nigeria"
         }' \
-    "https://api.kovatek.com/talents/profiles/123" 
+    "https://api.kovatek.com/talents/profiles" 
 ```
 > Response
 

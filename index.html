@@ -1402,7 +1402,7 @@ Super users can do that also anyways.</p>
 <td>3</td>
 </tr>
 </tbody></table>
-<h2 id='get-talents-profile'>Get Talents Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/talents/profiles"</span> <span class="se">\</span>
+<h2 id='get-talents-profile'>Get Talents Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/talents/profiles/2132"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
 <blockquote>
@@ -1436,7 +1436,7 @@ Super users can do that also anyways.</p>
 </span></code></pre></div>
 <p>This Endpoint gets a specified talent profile</p>
 <h3 id='http-request-22'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/talents/profiles</code></p>
+<p><code>GET http://api.kovatek.com/talents/profiles/{id}</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1449,7 +1449,7 @@ Super users can do that also anyways.</p>
 <td>The ID of the talent to retrieve profile</td>
 </tr>
 </tbody></table>
-<h2 id='get-clients-profile'>Get Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/clients/profiles"</span> <span class="se">\</span>
+<h2 id='get-clients-profile'>Get Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kovatek.com/clients/profiles/532"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span>
 </code></pre></div>
 <blockquote>
@@ -1467,7 +1467,7 @@ Super users can do that also anyways.</p>
 </span></code></pre></div>
 <p>This Endpoint gets a specified talent profile</p>
 <h3 id='http-request-23'>HTTP Request</h3>
-<p><code>GET http://api.kovatek.com/clients/profile</code></p>
+<p><code>GET http://api.kovatek.com/clients/profiles/{id}</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1577,7 +1577,7 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </span></code></pre></div>
 <p>This Endpoint is available to Update talent profile</p>
 <h3 id='http-request-25'>HTTP Request</h3>
-<p><code>PUT http://api.kovatek.com/clients/profiles/{id}</code></p>
+<p><code>PUT http://api.kovatek.com/talents/profiles</code></p>
 <h2 id='edit-clients-profile'>Edit Clients Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{

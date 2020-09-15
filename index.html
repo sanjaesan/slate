@@ -667,7 +667,7 @@ registration with the above http request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"token":"XXXXXXXXXXXXX"}'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"token":"XXXXXXXXXXXXX", "password": "N3WP4SSW0RD"}'</span> <span class="se">\</span>
   <span class="s2">"https://api.kovatek.com/reset"</span>
 </code></pre></div>
 <blockquote>
@@ -689,6 +689,11 @@ registration with the above http request</p>
 <td>token</td>
 <td>string</td>
 <td>token is required.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>new password</td>
 </tr>
 </tbody></table>
 

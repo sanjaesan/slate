@@ -178,7 +178,7 @@ email | string | Email field is required.
 ```shell
 curl -X POST \
   -H 'Content-Type: application/json' \
-  -d '{"token":"XXXXXXXXXXXXX"}' \
+  -d '{"token":"XXXXXXXXXXXXX", "password": "N3WP4SSW0RD"}' \
   "https://api.kovatek.com/reset"
 ```
 
@@ -195,6 +195,7 @@ This endpoint resets password.
 Parameter | Type | Description
 --------- | ------- | -----------
 token | string | token is required.
+password | string | new password 
 
 <aside class="notice">
 <code>Token</code> must be valid

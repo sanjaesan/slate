@@ -396,6 +396,9 @@
                     <a href="#take-a-test" class="toc-h2 toc-link" data-title="Take a Test">Take a Test</a>
                   </li>
                   <li>
+                    <a href="#submit-test" class="toc-h2 toc-link" data-title="Submit Test">Submit Test</a>
+                  </li>
+                  <li>
                     <a href="#get-a-specific-test" class="toc-h2 toc-link" data-title="Get a specific Test">Get a specific Test</a>
                   </li>
                   <li>
@@ -2479,7 +2482,7 @@ Passing <code>Zero Values</code> for all parameters will return all projects unf
 <p><code>POST http://api.kovatek.com/tests</code></p>
 
 <aside class="notice">
-Only <code>Talent</code> user can create a <code>Test</code>
+Once talent accept a test,<code>start_time</code> counts
 </aside>
 <h2 id='take-a-test'>Take a Test</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
@@ -2501,6 +2504,23 @@ Only <code>Talent</code> user can create a <code>Test</code>
 <aside class="notice">
 Only <code>Talent</code> user can create a <code>Test</code>
 </aside>
+<h2 id='submit-test'>Submit Test</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+       "submission_link":"github.com/my_username/my_kovatek_solution"
+      }'</span> <span class="se">\</span>
+    <span class="s2">"https://api.kovatek.com/tests/234/submit"</span> 
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<p>This Endpoint is available to Submit Test </p>
+<h3 id='http-request-46'>HTTP Request</h3>
+<p><code>POST http://api.kovatek.com/tests/{id}/submit</code></p>
 <h2 id='get-a-specific-test'>Get a specific Test</h2><h2 id='get-all-tests'>Get all Tests</h2><h2 id='update-test'>Update Test</h2><h2 id='delete-test'>Delete Test</h2><h1 id='question'>Question</h1><h2 id='create-a-question'>Create a Question</h2><h2 id='get-a-questiom'>Get a Questiom</h2><h2 id='get-all-question'>Get all Question</h2><h2 id='update-question'>Update Question</h2><h2 id='delete-question'>Delete Question</h2><h1 id='grade'>Grade</h1><h2 id='grade-a-test'>Grade a Test</h2><h2 id='get-all-grades'>Get all Grades</h2><h2 id='update-grade'>Update Grade</h2><h2 id='delete-grade'>Delete Grade</h2><h1 id='interview'>Interview</h1><h2 id='create-an-interview'>Create an Interview</h2><h2 id='update-interview'>Update Interview</h2><h2 id='get-interview'>Get interview</h2><h2 id='get-all-interviews'>Get all Interviews</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section helps you have a clue of what you are doing wrong

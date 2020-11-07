@@ -1622,6 +1622,30 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 <td>A short project title.</td>
 </tr>
 <tr>
+<td>avatar</td>
+<td>[]byte</td>
+<td style="text-align: center">false</td>
+<td>project/company logo, encode image into bytes</td>
+</tr>
+<tr>
+<td>company_name</td>
+<td>string</td>
+<td style="text-align: center">false</td>
+<td>name of company/organization posting job</td>
+</tr>
+<tr>
+<td>specifications</td>
+<td>Array</td>
+<td style="text-align: center">false</td>
+<td>project requirements specifications</td>
+</tr>
+<tr>
+<td>document_link</td>
+<td>string</td>
+<td style="text-align: center">false</td>
+<td>might be a google drive link to project files</td>
+</tr>
+<tr>
 <td>description</td>
 <td>string</td>
 <td style="text-align: center">true</td>
@@ -1640,16 +1664,46 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 <td>technical requirements.</td>
 </tr>
 <tr>
+<td>stacks</td>
+<td>Array</td>
+<td style="text-align: center">true</td>
+<td>techinal infrastructure</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>integer</td>
+<td style="text-align: center">false</td>
+<td>defaults to visible to all talent levels</td>
+</tr>
+<tr>
 <td>duration</td>
 <td>integer</td>
 <td style="text-align: center">true</td>
 <td>expressed in days</td>
 </tr>
 <tr>
+<td>languages</td>
+<td>Array</td>
+<td style="text-align: center">false</td>
+<td>required human language from talents</td>
+</tr>
+<tr>
 <td>ongoing</td>
 <td>bool</td>
 <td style="text-align: center">false</td>
 <td>to specify if it&#39;s a new project</td>
+</tr>
+<tr>
+<td>location</td>
+<td>string</td>
+<td style="text-align: center">true</td>
+<td>company location</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>string</td>
+<td style="text-align: center">true</td>
+<td>timezone</td>
 </tr>
 <tr>
 <td>Type</td>
@@ -1670,16 +1724,16 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 <td>to specify if fixed or hourly</td>
 </tr>
 <tr>
-<td>start_budget</td>
+<td>budget</td>
 <td>float</td>
-<td style="text-align: center">true</td>
+<td style="text-align: center">false</td>
 <td>minimum budgeted for the project</td>
 </tr>
 <tr>
-<td>end_budget</td>
-<td>float</td>
-<td style="text-align: center">true</td>
-<td>maximum budgeted for the project</td>
+<td>currency</td>
+<td>string</td>
+<td style="text-align: center">false</td>
+<td>currency budget</td>
 </tr>
 </tbody></table>
 
@@ -1740,16 +1794,20 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </tr>
 </thead><tbody>
 <tr>
-<td>Remote</td>
+<td>Freelance</td>
 <td style="text-align: center">1</td>
 </tr>
 <tr>
-<td>Office</td>
+<td>Fulltime</td>
 <td style="text-align: center">2</td>
 </tr>
 <tr>
-<td>CrowdSource</td>
+<td>Contract</td>
 <td style="text-align: center">3</td>
+</tr>
+<tr>
+<td>CrowdSource</td>
+<td style="text-align: center">4</td>
 </tr>
 </tbody></table>
 
@@ -1806,16 +1864,25 @@ Passing <code>Zero Values</code> for all parameters will return all talents unfi
 </tbody></table>
 <h2 id='new-project'>New Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer XXXXXXXXXXX"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{"title": "JB Finance",
+    <span class="nt">-d</span> <span class="s1">'{"title": "JB Finance web development project",
          "description": "A Fintech project that connect banks to logistic company",
-         "talent_size": 5,
-         "skills":["Reactjs, "Nodejs", "Grpc", "Protobuf"],
-         "type": 1,
-         "duration":4,
-         "commitment":2,
-         "complexity":1,
-         "start_budget":3000,
-         "end_budget":5000
+         "company_name": "JB Finance",
+         "document_link": "https://dropbox/me/folder/file",
+         "specifications": ["wireframes","SRS"]
+         "stacks": ["Reactjs, "Nodejs", "Protobuf"],
+         "skills": ["fullstack","web development", "Grpc","Rest"],
+         "languages": ["us-en","fr"],
+         "ongoing": false,
+         "location": "marseille",
+         "timezone": "GMT+1"
+         "type": 3,
+         "duration": 4,
+         "complexity": 1,
+         "commitment": 2,
+         "visibility": 2,
+         "talent_size": 3,
+         "budget": 6000,
+         "currency": "USD"
         }'</span> <span class="se">\</span>
     <span class="s2">"https://api.kovatek.com/projects"</span> 
 </code></pre></div>
